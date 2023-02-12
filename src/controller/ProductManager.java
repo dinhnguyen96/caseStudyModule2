@@ -1,6 +1,5 @@
 package controller;
 
-import model.Categories;
 import model.Product;
 
 import java.io.*;
