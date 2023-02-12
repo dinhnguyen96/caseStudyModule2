@@ -1,7 +1,6 @@
 package controller;
 
 import model.Customer;
-import model.Product;
 
 import java.io.*;
 import java.util.List;

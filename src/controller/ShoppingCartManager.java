@@ -1,7 +1,6 @@
 package controller;
 
 import model.CartInfo;
-import model.Product;
 
 import java.io.*;
 import java.util.List;
