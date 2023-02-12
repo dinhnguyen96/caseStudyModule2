@@ -36,7 +36,6 @@ public class ShoppingCartManager extends ApplicationManager<CartInfo>
         }
         return null;
     }
-
     @Override
     public void writeFile(List<CartInfo> cartInfoList)
     {
