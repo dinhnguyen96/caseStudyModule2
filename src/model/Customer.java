@@ -16,19 +16,18 @@ public class Customer implements Serializable
 
     private String email;
 
-    private String username;
 
-    private String password;
+    private User user;
 
-    public Customer(Long id, String customerCode, String customerName, String dateOfBirth, String placeOfBirth, String email, String username, String password) {
+
+    public Customer(Long id, String customerCode, String customerName, String dateOfBirth, String placeOfBirth, String email,User user) {
         this.id = id;
         this.customerCode = customerCode;
         this.customerName = customerName;
         this.dateOfBirth = dateOfBirth;
         this.placeOfBirth = placeOfBirth;
         this.email = email;
-        this.username = username;
-        this.password = password;
+        this.user = user;
     }
 
     public Long getId() {
@@ -79,19 +78,12 @@ public class Customer implements Serializable
         this.email = email;
     }
 
-    public String getUsername() {
-        return username;
+
+    public User getUser() {
+        return user;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+    public void setUser(User user) {
+        this.user = user;
     }
 }
