@@ -7,8 +7,8 @@ import java.util.List;
 
 public class UserManager extends ApplicationManager<User>
 {
-
-    public UserManager(String pathDataFile) {
+    public UserManager(String pathDataFile)
+    {
         super(pathDataFile);
     }
 

@@ -1,6 +1,6 @@
 package controller;
 
-import model.GetData;
+import storage.GetData;
 
 public abstract class ApplicationManager<T>  extends GetData<T>
 {
