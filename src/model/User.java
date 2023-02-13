@@ -9,6 +9,7 @@ public class User implements Serializable
     private Long id;
 
     private String userCode;
+
     private String username;
 
     private String password;
