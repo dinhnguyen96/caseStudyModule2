@@ -1,14 +1,10 @@
 package controller;
 
-import storage.GetData;
+import java.util.List;
 
-public abstract class ApplicationManager<T>  extends GetData<T>
+public interface ApplicationManager<T>
 {
-    protected ApplicationManager(String pathDataFile)
-    {
-        super(pathDataFile);
-    }
+    List<T> readFile();
 
-
-
+    void writeFile(List<T> dataList);
 }
