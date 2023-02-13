@@ -24,4 +24,24 @@ public class ShoppingCartManager implements ApplicationManager<CartInfo>
     {
       shoppingCartReadWrite.writeFile(cartInfoList);
     }
+
+    @Override
+    public CartInfo get(String code) {
+        return null;
+    }
+
+    @Override
+    public boolean add(CartInfo cartInfo) {
+        return false;
+    }
+
+    @Override
+    public boolean update(CartInfo cartInfo) {
+        return false;
+    }
+
+    @Override
+    public void remove(CartInfo cartInfo) {
+
+    }
 }

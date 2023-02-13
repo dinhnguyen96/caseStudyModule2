@@ -12,7 +12,6 @@ public class UserManager implements ApplicationManager<User>
     {
 
     }
-
     @Override
     public List<User> readFile()
     {
@@ -23,5 +22,27 @@ public class UserManager implements ApplicationManager<User>
     public void writeFile(List<User> userList)
     {
        userReadWrite.writeFile(userList);
+    }
+
+    @Override
+    public User get(String code)
+    {
+        return null;
+    }
+
+    @Override
+    public boolean add(User user)
+    {
+        return false;
+    }
+
+    @Override
+    public boolean update(User user) {
+        return false;
+    }
+
+    @Override
+    public void remove(User user) {
+
     }
 }

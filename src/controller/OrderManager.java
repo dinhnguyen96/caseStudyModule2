@@ -26,4 +26,24 @@ public class OrderManager implements ApplicationManager<Order>
     {
        orderReadWrite.writeFile(orderList);
     }
+
+    @Override
+    public Order get(String code) {
+        return null;
+    }
+
+    @Override
+    public boolean add(Order order) {
+        return false;
+    }
+
+    @Override
+    public boolean update(Order order) {
+        return false;
+    }
+
+    @Override
+    public void remove(Order order) {
+
+    }
 }

@@ -25,4 +25,24 @@ public class CustomerManager implements ApplicationManager<Customer>
     {
        customerReadWrite.writeFile(customerList);
     }
+
+    @Override
+    public Customer get(String code) {
+        return null;
+    }
+
+    @Override
+    public boolean add(Customer customer) {
+        return false;
+    }
+
+    @Override
+    public boolean update(Customer customer) {
+        return false;
+    }
+
+    @Override
+    public void remove(Customer customer) {
+
+    }
 }

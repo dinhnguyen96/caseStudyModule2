@@ -24,4 +24,24 @@ public class ProductManager implements ApplicationManager<Product>
     {
        productReadWrite.writeFile(productList);
     }
+
+    @Override
+    public Product get(String code) {
+        return null;
+    }
+
+    @Override
+    public boolean add(Product product) {
+        return false;
+    }
+
+    @Override
+    public boolean update(Product product) {
+        return false;
+    }
+
+    @Override
+    public void remove(Product product) {
+
+    }
 }

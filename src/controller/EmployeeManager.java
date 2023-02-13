@@ -24,4 +24,24 @@ public class EmployeeManager implements ApplicationManager<Employee>
     {
        employeeReadWrite.writeFile(employeeList);
     }
+
+    @Override
+    public Employee get(String code) {
+        return null;
+    }
+
+    @Override
+    public boolean add(Employee employee) {
+        return false;
+    }
+
+    @Override
+    public boolean update(Employee employee) {
+        return false;
+    }
+
+    @Override
+    public void remove(Employee employee) {
+
+    }
 }

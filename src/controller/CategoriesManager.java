@@ -26,4 +26,24 @@ public class CategoriesManager implements ApplicationManager<Categories>
         categoriesReadWrite.writeFile(categoriesList);
     }
 
+    @Override
+    public Categories get(String code) {
+        return null;
+    }
+
+    @Override
+    public boolean add(Categories categories) {
+        return false;
+    }
+
+    @Override
+    public boolean update(Categories categories) {
+        return false;
+    }
+
+    @Override
+    public void remove(Categories categories) {
+
+    }
+
 }

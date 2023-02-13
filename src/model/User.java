@@ -5,17 +5,39 @@ import java.util.List;
 
 public class User implements Serializable
 {
+
+    private Long id;
+
+    private String userCode;
     private String username;
 
     private String password;
 
     private List<Roles> rolesList;
 
-    public User(String username, String password, List<Roles> rolesList)
+    public User(Long id, String userCode,String username, String password, List<Roles> rolesList)
     {
+        this.id = id;
+        this.userCode = userCode;
         this.username = username;
         this.password = password;
         this.rolesList = rolesList;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getUserCode() {
+        return userCode;
+    }
+
+    public void setUserCode(String userCode) {
+        this.userCode = userCode;
     }
 
     public String getUsername() {
