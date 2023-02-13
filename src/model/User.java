@@ -9,7 +9,6 @@ public class User implements Serializable
 
     private String password;
 
-
     private List<Roles> rolesList;
 
     public User(String username, String password, List<Roles> rolesList)

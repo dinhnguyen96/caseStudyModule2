@@ -10,8 +10,6 @@ public class Roles implements Serializable
 
     private String roleName;
 
-
-
     public Roles(long id, String roleCode, String roleName)
     {
         this.id = id;
