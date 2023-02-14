@@ -5,7 +5,7 @@ import storage.CategoriesReadWrite;
 
 import java.util.List;
 
-public class CategoriesManager implements ApplicationManager<Categories>
+public class CategoriesManager implements ApplicationManager<Categories>, AdditionalFunction<Categories>
 {
     private CategoriesReadWrite categoriesReadWrite;
 

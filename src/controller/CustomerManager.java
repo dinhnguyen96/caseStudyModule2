@@ -5,7 +5,7 @@ import storage.CustomerReadWrite;
 
 import java.util.List;
 
-public class CustomerManager implements ApplicationManager<Customer>
+public class CustomerManager implements ApplicationManager<Customer>, AdditionalFunction<Customer>
 {
     private CustomerReadWrite customerReadWrite;
 

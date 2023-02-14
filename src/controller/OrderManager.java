@@ -5,7 +5,7 @@ import storage.OrderReadWrite;
 
 import java.util.List;
 
-public class OrderManager implements ApplicationManager<Order>
+public class OrderManager implements ApplicationManager<Order>, AdditionalFunction<Order>
 {
     private OrderReadWrite orderReadWrite;
 

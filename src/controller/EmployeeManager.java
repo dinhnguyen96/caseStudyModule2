@@ -5,7 +5,7 @@ import storage.EmployeeReadWrite;
 
 import java.util.List;
 
-public class EmployeeManager implements ApplicationManager<Employee>
+public class EmployeeManager implements ApplicationManager<Employee>, AdditionalFunction<Employee>
 {
     private EmployeeReadWrite employeeReadWrite;
 
