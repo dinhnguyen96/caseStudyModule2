@@ -10,9 +10,10 @@ public class CartInfo implements Serializable
 
     private Customer customer;
 
-    public CartInfo()
+    public CartInfo(Customer customer)
     {
         this.cartList = new ArrayList<>();
+        this.customer = customer;
     }
 
     public List<Item> getCartList()
