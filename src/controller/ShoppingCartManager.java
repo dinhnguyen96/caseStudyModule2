@@ -33,11 +33,14 @@ public class ShoppingCartManager implements ApplicationManager<CartInfo>
     @Override
     public CartInfo get(String customerCode)
     {
-        for (CartInfo cartInfo:readFile())
+        if (readFile() != null)
         {
-            if (cartInfo.getCustomer().getCustomerCode().equalsIgnoreCase(customerCode))
+            for (CartInfo cartInfo:readFile())
             {
-                return cartInfo;
+                if (cartInfo.getCustomer().getCustomerCode().equalsIgnoreCase(customerCode))
+                {
+                    return cartInfo;
+                }
             }
         }
         return null;
