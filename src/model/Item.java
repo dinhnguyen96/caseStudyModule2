@@ -7,10 +7,9 @@ public class Item implements Serializable
       private Product product;
       private int quantity;
 
-      public Item(Product product)
+      public Item()
       {
-         this.product = product;
-         this.quantity = 0;
+          this.quantity = 0;
       }
       public Product getProduct()
       {
