@@ -27,10 +27,7 @@ public class ShoppingCartManager implements ApplicationManager<CartInfo>
     {
         shoppingCartReadWrite.writeFile(cartInfoList);
     }
-
-
     // lay cartInfo theo user
-
     @Override
     public CartInfo get(String customerCode)
     {
