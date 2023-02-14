@@ -1,13 +1,14 @@
 package controller;
 
 import model.Order;
+import storage.GetData;
 import storage.OrderReadWrite;
 
 import java.util.List;
 
 public class OrderManager implements ApplicationManager<Order>, AdditionalFunction<Order>
 {
-    private OrderReadWrite orderReadWrite;
+    private GetData<Order> orderReadWrite;
 
     private List<Order> orderList;
 

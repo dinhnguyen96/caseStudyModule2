@@ -2,12 +2,13 @@ package controller;
 
 import model.Employee;
 import storage.EmployeeReadWrite;
+import storage.GetData;
 
 import java.util.List;
 
 public class EmployeeManager implements ApplicationManager<Employee>, AdditionalFunction<Employee>
 {
-    private EmployeeReadWrite employeeReadWrite;
+    private GetData<Employee> employeeReadWrite;
 
     private List<Employee> employeeList;
     public EmployeeManager()

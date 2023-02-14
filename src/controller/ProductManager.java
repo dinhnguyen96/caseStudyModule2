@@ -1,13 +1,14 @@
 package controller;
 
 import model.Product;
+import storage.GetData;
 import storage.ProductReadWrite;
 
 import java.util.List;
 
 public class ProductManager implements ApplicationManager<Product>, AdditionalFunction<Product>
 {
-    private ProductReadWrite productReadWrite;
+    private GetData<Product> productReadWrite;
 
     private List<Product> productList;
 

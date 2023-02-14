@@ -2,12 +2,13 @@ package controller;
 
 import model.Customer;
 import storage.CustomerReadWrite;
+import storage.GetData;
 
 import java.util.List;
 
 public class CustomerManager implements ApplicationManager<Customer>, AdditionalFunction<Customer>
 {
-    private CustomerReadWrite customerReadWrite;
+    private GetData<Customer> customerReadWrite;
 
     private List<Customer> customerList;
 
@@ -43,7 +44,6 @@ public class CustomerManager implements ApplicationManager<Customer>, Additional
         }
         return null;
     }
-
     @Override
     public boolean add(Customer customer)
     {

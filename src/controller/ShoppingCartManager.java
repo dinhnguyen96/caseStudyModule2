@@ -1,14 +1,16 @@
 package controller;
 
 import model.CartInfo;
+import model.Customer;
 import model.Item;
+import storage.GetData;
 import storage.ShoppingCartReadWrite;
 
 import java.util.List;
 
 public class ShoppingCartManager implements ApplicationManager<CartInfo>
 {
-    private ShoppingCartReadWrite shoppingCartReadWrite;
+    private GetData<CartInfo> shoppingCartReadWrite;
 
     private List<CartInfo> cartInfoList;
 
@@ -45,22 +47,32 @@ public class ShoppingCartManager implements ApplicationManager<CartInfo>
     {
         boolean checkExits = false;
         CartInfo cartInfo = get(customerCode);
-        for (Item item1 : cartInfo.getCartList())
+        if(cartInfo == null)
         {
-            if (item1.getProduct().getProductCode().equalsIgnoreCase(item.getProduct().getProductCode()))
-            {
-                item1.setQuantity(item1.getQuantity()+1);
-                checkExits = true;
-                break;
-            }
+            ApplicationManager<Customer> customerManager = new CustomerManager();
+            Customer customer = customerManager.get(customerCode);
+            cartInfo = new CartInfo(customer);
         }
-        if (!checkExits)
+        else
         {
-            item.setQuantity(1);
-            cartInfo.getCartList().add(item);
+            for (Item item1 : cartInfo.getCartList())
+            {
+                if (item1.getProduct().getProductCode().equalsIgnoreCase(item.getProduct().getProductCode()))
+                {
+                    item1.setQuantity(item1.getQuantity()+1);
+                    checkExits = true;
+                    break;
+                }
+            }
+            if (!checkExits)
+            {
+                item.setQuantity(1);
+                cartInfo.getCartList().add(item);
+            }
         }
         cartInfoList.set(cartInfoList.indexOf(cartInfo), cartInfo);
         writeFile(cartInfoList);
+
     }
     // add item in cart of user
     public void removeItem(String customerCode, String productCode)

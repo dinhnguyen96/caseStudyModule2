@@ -2,12 +2,13 @@ package controller;
 
 import model.Categories;
 import storage.CategoriesReadWrite;
+import storage.GetData;
 
 import java.util.List;
 
 public class CategoriesManager implements ApplicationManager<Categories>, AdditionalFunction<Categories>
 {
-    private CategoriesReadWrite categoriesReadWrite;
+    private GetData<Categories> categoriesReadWrite;
 
     private List<Categories> categoriesList;
 
