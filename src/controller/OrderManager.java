@@ -1,13 +1,11 @@
 package controller;
 
-import model.Customer;
-import model.Employee;
 import model.Order;
 import storage.OrderReadWrite;
 
 import java.util.List;
 
-public class OrderManager implements ApplicationManager<Order>, SearchingManager<Order>
+public class OrderManager implements ApplicationManager<Order>
 {
     private OrderReadWrite orderReadWrite;
 
@@ -88,17 +86,5 @@ public class OrderManager implements ApplicationManager<Order>, SearchingManager
             return true;
         }
         return false;
-    }
-    @Override
-    public Order searchingByCode(String orderCode)
-    {
-        for (Order order : readFile())
-        {
-            if (order.getOrderCode().equalsIgnoreCase(orderCode))
-            {
-                return order;
-            }
-        }
-        return null;
     }
 }
