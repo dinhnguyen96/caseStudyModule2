@@ -5,7 +5,7 @@ import storage.CategoriesReadWrite;
 
 import java.util.List;
 
-public class CategoriesManager implements ApplicationManager<Categories>
+public class CategoriesManager implements ApplicationManager<Categories>, SearchingManager<Categories>
 {
     private CategoriesReadWrite categoriesReadWrite;
 
@@ -84,4 +84,16 @@ public class CategoriesManager implements ApplicationManager<Categories>
         return false;
     }
 
+    @Override
+    public Categories searchingByCode(String categoriesCode)
+    {
+        for (Categories categories : readFile())
+        {
+            if (categories.getCategoriesCode().equalsIgnoreCase(categoriesCode))
+            {
+                return categories;
+            }
+        }
+        return null;
+    }
 }

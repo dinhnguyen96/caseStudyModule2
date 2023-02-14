@@ -5,7 +5,7 @@ import storage.ProductReadWrite;
 
 import java.util.List;
 
-public class ProductManager implements ApplicationManager<Product>
+public class ProductManager implements ApplicationManager<Product>, SearchingManager<Product>
 {
     private ProductReadWrite productReadWrite;
 
@@ -81,5 +81,19 @@ public class ProductManager implements ApplicationManager<Product>
             return true;
         }
         return false;
+    }
+
+    @Override
+    public Product searchingByCode(String productCode)
+    {
+        for (Product product : readFile())
+        {
+             if (product.getProductCode().equalsIgnoreCase(productCode))
+             {
+                 return product;
+             }
+
+        }
+        return null;
     }
 }

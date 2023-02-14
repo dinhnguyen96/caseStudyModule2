@@ -7,7 +7,7 @@ import storage.OrderReadWrite;
 
 import java.util.List;
 
-public class OrderManager implements ApplicationManager<Order>
+public class OrderManager implements ApplicationManager<Order>, SearchingManager<Order>
 {
     private OrderReadWrite orderReadWrite;
 
@@ -88,5 +88,17 @@ public class OrderManager implements ApplicationManager<Order>
             return true;
         }
         return false;
+    }
+    @Override
+    public Order searchingByCode(String orderCode)
+    {
+        for (Order order : readFile())
+        {
+            if (order.getOrderCode().equalsIgnoreCase(orderCode))
+            {
+                return order;
+            }
+        }
+        return null;
     }
 }

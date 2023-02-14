@@ -1,12 +1,11 @@
 package controller;
 
-import model.Customer;
 import model.Employee;
 import storage.EmployeeReadWrite;
 
 import java.util.List;
 
-public class EmployeeManager implements ApplicationManager<Employee>
+public class EmployeeManager implements ApplicationManager<Employee>, SearchingManager<Employee>
 {
     private EmployeeReadWrite employeeReadWrite;
 
@@ -83,5 +82,17 @@ public class EmployeeManager implements ApplicationManager<Employee>
             return true;
         }
         return false;
+    }
+    @Override
+    public Employee searchingByCode(String employeeCode)
+    {
+        for (Employee employee : readFile())
+        {
+            if (employee.getEmployeeCode().equalsIgnoreCase(employeeCode))
+            {
+                return employee;
+            }
+        }
+        return null;
     }
 }

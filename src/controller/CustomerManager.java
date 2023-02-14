@@ -5,7 +5,7 @@ import storage.CustomerReadWrite;
 
 import java.util.List;
 
-public class CustomerManager implements ApplicationManager<Customer>
+public class CustomerManager implements ApplicationManager<Customer>,SearchingManager<Customer>
 {
     private CustomerReadWrite customerReadWrite;
 
@@ -85,5 +85,18 @@ public class CustomerManager implements ApplicationManager<Customer>
             return true;
         }
         return false;
+    }
+
+    @Override
+    public Customer searchingByCode(String customerCode)
+    {
+        for (Customer customer : readFile())
+        {
+            if (customer.getCustomerCode().equalsIgnoreCase(customerCode))
+            {
+                return customer;
+            }
+        }
+        return null;
     }
 }
