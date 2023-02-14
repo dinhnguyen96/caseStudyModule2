@@ -55,6 +55,8 @@ public class ShoppingCartManager implements ApplicationManager<CartInfo>
             ApplicationManager<Customer> customerManager = new CustomerManager();
             Customer customer = customerManager.get(customerCode);
             cartInfo = new CartInfo(customer);
+            item.setQuantity(1);
+            cartInfo.getCartList().add(item);
         }
         else
         {
