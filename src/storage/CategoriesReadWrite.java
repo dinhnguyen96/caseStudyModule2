@@ -33,7 +33,7 @@ public class CategoriesReadWrite extends GetData<Categories>
         }
         catch (FileNotFoundException e)
         {
-            System.out.println("Không tìm thấy đường dẫn file !");
+            System.out.println("Không tìm thấy đường dẫn file categories !");
         }
         catch (ClassNotFoundException e)
         {
@@ -41,7 +41,7 @@ public class CategoriesReadWrite extends GetData<Categories>
         }
         catch (IOException e)
         {
-            System.out.println("Lỗi đọc file dữ liệu !");
+            System.out.println("Lỗi đọc file dữ liệu categories !");
         }
         return null;
     }
@@ -62,7 +62,7 @@ public class CategoriesReadWrite extends GetData<Categories>
         }
         catch (IOException e)
         {
-            System.out.println("Lỗi đọc file dữ liệu !");
+            System.out.println("Lỗi ghi file dữ liệu categories !");
         }
     }
 }

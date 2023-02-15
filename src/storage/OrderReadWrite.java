@@ -41,7 +41,7 @@ public class OrderReadWrite extends GetData<Order>
         }
         catch (IOException e)
         {
-            System.out.println("Lỗi đọc file dữ liệu !");
+            System.out.println("Lỗi đọc file dữ liệu order !");
         }
         return null;
     }
@@ -57,11 +57,11 @@ public class OrderReadWrite extends GetData<Order>
         }
         catch (FileNotFoundException e)
         {
-            System.out.println("Không tìm thấy đường dẫn file !");
+            System.out.println("Không tìm thấy đường dẫn file order!");
         }
         catch (IOException e)
         {
-            System.out.println("Lỗi đọc file dữ liệu !");
+            System.out.println("Lỗi ghi file dữ liệu order!");
         }
     }
 }

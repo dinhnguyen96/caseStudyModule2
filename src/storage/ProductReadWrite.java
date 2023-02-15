@@ -34,7 +34,7 @@ public class ProductReadWrite extends GetData<Product>
         }
         catch (FileNotFoundException e)
         {
-            System.out.println("Không tìm thấy đường dẫn file !");
+            System.out.println("Không tìm thấy đường dẫn file product !");
         }
         catch (ClassNotFoundException e)
         {
@@ -42,7 +42,7 @@ public class ProductReadWrite extends GetData<Product>
         }
         catch (IOException e)
         {
-            System.out.println("Lỗi đọc file dữ liệu !");
+            System.out.println("Lỗi đọc file dữ liệu product !");
         }
         return null;
     }
@@ -63,7 +63,7 @@ public class ProductReadWrite extends GetData<Product>
         }
         catch (IOException e)
         {
-            System.out.println("Lỗi đọc file dữ liệu !");
+            System.out.println("Lỗi ghi file dữ liệu product !");
         }
     }
 

@@ -40,7 +40,7 @@ public class UserReadWrite extends GetData<User>
         }
         catch (IOException e)
         {
-            System.out.println("Lỗi đọc file dữ liệu !");
+            System.out.println("Lỗi đọc file dữ liệu user !");
         }
         return null;
     }
@@ -56,11 +56,11 @@ public class UserReadWrite extends GetData<User>
         }
         catch (FileNotFoundException e)
         {
-            System.out.println("Không tìm thấy đường dẫn file !");
+            System.out.println("Không tìm thấy đường dẫn file user !");
         }
         catch (IOException e)
         {
-            System.out.println("Lỗi đọc file dữ liệu !");
+            System.out.println("Lỗi ghi file dữ liệu user !");
         }
 
     }

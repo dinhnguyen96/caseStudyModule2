@@ -35,7 +35,7 @@ public class CustomerReadWrite extends GetData<Customer>
         }
         catch (FileNotFoundException e)
         {
-            System.out.println("Không tìm thấy đường dẫn file !");
+            System.out.println("Không tìm thấy đường dẫn file customer !");
         }
         catch (ClassNotFoundException e)
         {
@@ -43,7 +43,7 @@ public class CustomerReadWrite extends GetData<Customer>
         }
         catch (IOException e)
         {
-            System.out.println("Lỗi đọc file dữ liệu !");
+            System.out.println("Lỗi đọc file dữ liệu customer!");
         }
         return null;
     }
@@ -63,7 +63,7 @@ public class CustomerReadWrite extends GetData<Customer>
         }
         catch (IOException e)
         {
-            System.out.println("Lỗi đọc file dữ liệu !");
+            System.out.println("Lỗi ghi file dữ liệu customer !");
         }
 
     }
