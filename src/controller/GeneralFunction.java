@@ -1,6 +1,6 @@
 package controller;
 
-public interface AdditionalFunction<T> {
+public interface GeneralFunction<T> {
 
     boolean add(T t);
 

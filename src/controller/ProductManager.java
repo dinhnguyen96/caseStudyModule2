@@ -6,7 +6,7 @@ import storage.ProductReadWrite;
 
 import java.util.List;
 
-public class ProductManager implements ApplicationManager<Product>, AdditionalFunction<Product>
+public class ProductManager implements ApplicationManager<Product>, GeneralFunction<Product>
 {
     private GetData<Product> productReadWrite;
 

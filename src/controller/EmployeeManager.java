@@ -6,7 +6,7 @@ import storage.GetData;
 
 import java.util.List;
 
-public class EmployeeManager implements ApplicationManager<Employee>, AdditionalFunction<Employee>
+public class EmployeeManager implements ApplicationManager<Employee>, GeneralFunction<Employee>
 {
     private GetData<Employee> employeeReadWrite;
 

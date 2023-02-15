@@ -8,7 +8,6 @@ public interface ApplicationManager<T>
 
     void writeFile(List<T> dataList);
 
-
     T get(String code);
 
 

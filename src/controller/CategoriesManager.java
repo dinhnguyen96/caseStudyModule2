@@ -6,7 +6,7 @@ import storage.GetData;
 
 import java.util.List;
 
-public class CategoriesManager implements ApplicationManager<Categories>, AdditionalFunction<Categories>
+public class CategoriesManager implements ApplicationManager<Categories>, GeneralFunction<Categories>
 {
     private GetData<Categories> categoriesReadWrite;
 
