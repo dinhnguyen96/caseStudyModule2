@@ -19,7 +19,7 @@ public class ProductReadWrite extends GetData<Product>
     {
         if (productReadWrite == null)
         {
-            productReadWrite = new ProductReadWrite("");
+            productReadWrite = new ProductReadWrite("src/storage/file/product.dat");
         }
         return productReadWrite;
     }

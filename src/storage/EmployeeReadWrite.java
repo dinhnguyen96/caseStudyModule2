@@ -18,7 +18,7 @@ public class EmployeeReadWrite extends GetData<Employee>
     {
         if (employeeReadWrite == null)
         {
-            employeeReadWrite = new EmployeeReadWrite("");
+            employeeReadWrite = new EmployeeReadWrite("src/storage/file/employee.dat");
         }
         return employeeReadWrite;
     }

@@ -18,7 +18,7 @@ public class ShoppingCartReadWrite extends GetData<CartInfo>
     {
         if (shoppingCartReadWrite == null)
         {
-            shoppingCartReadWrite = new ShoppingCartReadWrite("");
+            shoppingCartReadWrite = new ShoppingCartReadWrite("src/storage/file/shoppingcart.dat");
         }
         return shoppingCartReadWrite;
     }

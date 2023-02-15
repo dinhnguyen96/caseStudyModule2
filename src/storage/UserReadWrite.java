@@ -16,7 +16,7 @@ public class UserReadWrite extends GetData<User>
     {
         if (userReadWrite == null)
         {
-            userReadWrite = new UserReadWrite("");
+            userReadWrite = new UserReadWrite("src/storage/file/user.dat");
         }
         return userReadWrite;
     }

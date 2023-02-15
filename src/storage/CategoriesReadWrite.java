@@ -17,7 +17,7 @@ public class CategoriesReadWrite extends GetData<Categories>
     {
         if (categoriesReadWrite == null)
         {
-            categoriesReadWrite = new CategoriesReadWrite("");
+            categoriesReadWrite = new CategoriesReadWrite("src/storage/file/categories.dat");
         }
         return categoriesReadWrite;
     }

@@ -17,7 +17,7 @@ public class OrderReadWrite extends GetData<Order>
     {
         if (orderReadWrite == null)
         {
-            orderReadWrite = new OrderReadWrite("");
+            orderReadWrite = new OrderReadWrite("src/storage/file/order.dat");
         }
         return orderReadWrite;
     }

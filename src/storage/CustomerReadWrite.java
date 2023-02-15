@@ -19,7 +19,7 @@ public class CustomerReadWrite extends GetData<Customer>
     {
         if (customerReadWrite == null)
         {
-           customerReadWrite = new CustomerReadWrite("");
+           customerReadWrite = new CustomerReadWrite("src/storage/file/customer.dat");
         }
         return customerReadWrite;
     }
