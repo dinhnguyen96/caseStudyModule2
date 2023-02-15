@@ -6,7 +6,7 @@ import storage.GetData;
 
 import java.util.List;
 
-public class CustomerManager implements ApplicationManager<Customer>, AdditionalFunction<Customer>
+public class CustomerManager implements ApplicationManager<Customer>, GeneralFunction<Customer>
 {
     private GetData<Customer> customerReadWrite;
 
