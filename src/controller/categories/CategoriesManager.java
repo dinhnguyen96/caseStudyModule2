@@ -1,12 +1,13 @@
-package controller;
+package controller.categories;
 
+import controller.manager.GeneralFunction;
 import model.Categories;
 import storage.CategoriesReadWrite;
 import storage.GetData;
 
 import java.util.List;
 
-public class CategoriesManager implements ApplicationManager<Categories>, GeneralFunction<Categories>
+public class CategoriesManager implements GeneralFunction<Categories>
 {
     private GetData<Categories> categoriesReadWrite;
 

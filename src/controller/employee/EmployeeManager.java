@@ -1,12 +1,13 @@
-package controller;
+package controller.employee;
 
+import controller.manager.GeneralFunction;
 import model.Employee;
 import storage.EmployeeReadWrite;
 import storage.GetData;
 
 import java.util.List;
 
-public class EmployeeManager implements ApplicationManager<Employee>, GeneralFunction<Employee>
+public class EmployeeManager implements GeneralFunction<Employee>
 {
     private GetData<Employee> employeeReadWrite;
 

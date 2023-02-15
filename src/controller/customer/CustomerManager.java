@@ -1,12 +1,13 @@
-package controller;
+package controller.customer;
 
+import controller.manager.GeneralFunction;
 import model.Customer;
 import storage.CustomerReadWrite;
 import storage.GetData;
 
 import java.util.List;
 
-public class CustomerManager implements ApplicationManager<Customer>, GeneralFunction<Customer>
+public class CustomerManager implements GeneralFunction<Customer>
 {
     private GetData<Customer> customerReadWrite;
 

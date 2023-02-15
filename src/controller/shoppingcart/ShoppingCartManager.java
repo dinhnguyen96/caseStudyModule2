@@ -1,5 +1,7 @@
-package controller;
+package controller.shoppingcart;
 
+import controller.manager.ApplicationManager;
+import controller.customer.CustomerManager;
 import model.CartInfo;
 import model.Customer;
 import model.Item;
@@ -80,7 +82,7 @@ public class ShoppingCartManager implements ApplicationShoppingCart
         writeFile(cartInfoList);
 
     }
-    // add item in cart of user
+    // remove item in cart of user
     @Override
     public void removeItem(String customerCode, String productCode)
     {

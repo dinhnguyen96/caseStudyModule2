@@ -1,12 +1,13 @@
-package controller;
+package controller.user;
 
+import controller.manager.GeneralFunction;
 import model.User;
 import storage.GetData;
 import storage.UserReadWrite;
 
 import java.util.List;
 
-public class UserManager implements ApplicationManager<User>, GeneralFunction<User>
+public class UserManager implements GeneralFunction<User>
 {
     private GetData<User> userReadWrite;
 

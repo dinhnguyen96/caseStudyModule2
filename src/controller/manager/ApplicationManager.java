@@ -1,4 +1,4 @@
-package controller;
+package controller.manager;
 
 import java.util.List;
 

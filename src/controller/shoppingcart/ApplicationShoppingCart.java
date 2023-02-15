@@ -1,5 +1,6 @@
-package controller;
+package controller.shoppingcart;
 
+import controller.manager.ApplicationManager;
 import model.CartInfo;
 import model.Item;
 

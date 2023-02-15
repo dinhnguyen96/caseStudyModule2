@@ -1,12 +1,13 @@
-package controller;
+package controller.order;
 
+import controller.manager.GeneralFunction;
 import model.Order;
 import storage.GetData;
 import storage.OrderReadWrite;
 
 import java.util.List;
 
-public class OrderManager implements ApplicationManager<Order>, GeneralFunction<Order>
+public class OrderManager implements GeneralFunction<Order>
 {
     private GetData<Order> orderReadWrite;
 

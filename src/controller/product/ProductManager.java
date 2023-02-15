@@ -1,12 +1,13 @@
-package controller;
+package controller.product;
 
+import controller.manager.GeneralFunction;
 import model.Product;
 import storage.GetData;
 import storage.ProductReadWrite;
 
 import java.util.List;
 
-public class ProductManager implements ApplicationManager<Product>, GeneralFunction<Product>
+public class ProductManager implements GeneralFunction<Product>
 {
     private GetData<Product> productReadWrite;
 
