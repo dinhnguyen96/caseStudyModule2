@@ -35,7 +35,7 @@ public class OrderDetailReadWrite extends GetData<OrderDetail>
         }
         catch (FileNotFoundException e)
         {
-            System.out.println("Không tìm thấy đường dẫn file !");
+            System.out.println("Không tìm thấy đường dẫn file order detail !");
         }
         catch (ClassNotFoundException e)
         {

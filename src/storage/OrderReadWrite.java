@@ -33,7 +33,7 @@ public class OrderReadWrite extends GetData<Order>
         }
         catch (FileNotFoundException e)
         {
-            System.out.println("Không tìm thấy đường dẫn file !");
+            System.out.println("Không tìm thấy đường dẫn file order !");
         }
         catch (ClassNotFoundException e)
         {

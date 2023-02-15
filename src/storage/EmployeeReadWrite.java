@@ -58,11 +58,11 @@ public class EmployeeReadWrite extends GetData<Employee>
         }
         catch (FileNotFoundException e)
         {
-            System.out.println("Không tìm thấy đường dẫn file !");
+            System.out.println("Không tìm thấy đường dẫn file employee !");
         }
         catch (IOException e)
         {
-            System.out.println("Lỗi ghi file dữ liệu customer !");
+            System.out.println("Lỗi ghi file dữ liệu employee !");
         }
     }
 }

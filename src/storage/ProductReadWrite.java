@@ -59,7 +59,7 @@ public class ProductReadWrite extends GetData<Product>
         }
         catch (FileNotFoundException e)
         {
-            System.out.println("Không tìm thấy đường dẫn file !");
+            System.out.println("Không tìm thấy đường dẫn file product !");
         }
         catch (IOException e)
         {

@@ -58,7 +58,7 @@ public class ShoppingCartReadWrite extends GetData<CartInfo>
         }
         catch (FileNotFoundException e)
         {
-            System.out.println("Không tìm thấy đường dẫn file !");
+            System.out.println("Không tìm thấy đường dẫn file shopping cart !");
         }
         catch (IOException e)
         {

@@ -32,7 +32,7 @@ public class UserReadWrite extends GetData<User>
         }
         catch (FileNotFoundException e)
         {
-            System.out.println("Không tìm thấy đường dẫn file !");
+            System.out.println("Không tìm thấy đường dẫn file user !");
         }
         catch (ClassNotFoundException e)
         {
