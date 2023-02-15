@@ -8,7 +8,7 @@ import storage.ShoppingCartReadWrite;
 
 import java.util.List;
 
-public class ShoppingCartManager implements ApplicationManager<CartInfo>
+public class ShoppingCartManager implements ApplicationShoppingCart
 {
     private GetData<CartInfo> shoppingCartReadWrite;
 
@@ -46,6 +46,7 @@ public class ShoppingCartManager implements ApplicationManager<CartInfo>
         return null;
     }
     // add item in cart of user
+    @Override
     public void addItem(String customerCode,Item item)
     {
         boolean checkExits = false;
@@ -80,6 +81,7 @@ public class ShoppingCartManager implements ApplicationManager<CartInfo>
 
     }
     // add item in cart of user
+    @Override
     public void removeItem(String customerCode, String productCode)
     {
         CartInfo cartInfo = get(customerCode);
@@ -96,6 +98,7 @@ public class ShoppingCartManager implements ApplicationManager<CartInfo>
         writeFile(cartInfoList);
     }
     // clear item in cart of user
+    @Override
     public void removeAllItem(String customerCode)
     {
         CartInfo cartInfo = get(customerCode);
