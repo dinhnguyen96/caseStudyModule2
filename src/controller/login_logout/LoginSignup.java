@@ -1,4 +1,4 @@
-package controller.login_signup;
+package controller.login_logout;
 
 import controller.customer.CustomerManager;
 import controller.manager.GeneralFunction;
@@ -21,6 +21,8 @@ public class LoginSignup {
 
     private GeneralFunction<User> userManager;
 
+    public static Customer signInCustomeInfp = null;
+
 
     public LoginSignup()
     {
@@ -39,34 +41,29 @@ public class LoginSignup {
         System.out.print("Password : ");
         password = input.nextLine();
 
-        List<Customer> customers = customerManager.readFile();
 
-        Customer signInCustomer = null;
+    }
+    private void signInHandling(String username, String password)
+    {
+        List<Customer> customers = customerManager.readFile();
 
         for (Customer customer : customers)
         {
             if (customer.getUser().getUsername().equals(username) && customer.getUser().getPassword().equals(password))
             {
-                signInCustomer = customer;
+                signInCustomeInfp = customer;
                 break;
             }
         }
 
-        if (signInCustomer == null)
+        if (signInCustomeInfp == null)
         {
-            System.out.println("Đăng nhập thất bại");
+            System.out.println("Đăng nhập thất bại !");
         }
         else
         {
-           for (Roles roles: signInCustomer.getUser().getRolesList())
-           {
-               if (roles.getRoleName().equalsIgnoreCase("Admin"))
-               {
-                   break;
-               }
-           }
+            System.out.println("Đăng nhập thành công !");
         }
-
     }
     public void signUp()
     {
