@@ -21,29 +21,19 @@ public class SigninSignup {
 
     private GeneralFunction<User> userManager;
 
-    public static Customer signInCustomeInfp = null;
+    public static Customer signInCustomerInfp = null;
 
 
-    public SigninSignup()
+    public SigninSignup(String username, String password)
     {
-        this.username = "";
-        this.password = "";
+        this.username = username;
+        this.password = password;
         customerManager = new CustomerManager();
         userManager = new UserManager();
     }
 
-    public void signIn()
-    {
-        System.out.println("Đăng nhập tài khoản");
-        Scanner input = new Scanner(System.in);
-        System.out.print("Username : ");
-        username = input.nextLine();
-        System.out.print("Password : ");
-        password = input.nextLine();
-        signInHandling(username,password);
-
-    }
-    private void signInHandling(String username, String password)
+    // Xử lý đăng nhập
+    public Customer signIn()
     {
         List<Customer> customers = customerManager.readFile();
 
@@ -51,69 +41,36 @@ public class SigninSignup {
         {
             if (customer.getUser().getUsername().equals(username) && customer.getUser().getPassword().equals(password))
             {
-                signInCustomeInfp = customer;
+                signInCustomerInfp = customer;
                 break;
             }
         }
-
-        if (signInCustomeInfp == null)
-        {
-            System.out.println("Đăng nhập thất bại !");
-        }
-        else
-        {
-            System.out.println("Đăng nhập thành công !");
-        }
+        return signInCustomerInfp;// return null
     }
-    public void signUp()
+    // Xử lý Đăng ký
+    public boolean signUp(String username,String password, String name,String dayOfBirth, String placeOfBirth,String email)
     {
-        System.out.println("Đăng ký tài khoản");
         List<Customer> customerList = customerManager.readFile();
-
         List<User> userList = userManager.readFile();
-
         List<Roles> rolesList = new ArrayList<>();
-
         Roles rolesCustomer = new Roles(3L, "03","CUSTOMER");
         rolesList.add(rolesCustomer);
+        User user = new User(userList.get(userList.size()-1).getId()+1, String.valueOf(userList.get(userList.size()-1).getId()+1),
+                username, password, rolesList);
+        Customer customer = new Customer(customerList.get(customerList.size()-1).getId()+1,String.valueOf(customerList.get(customerList.size()-1).getId()+1),
+                name,dayOfBirth, placeOfBirth, email, user);
 
-        User user;
+         boolean  result = customerManager.add(customer);
+         if (!result)
+         {
+             return false;
+         }
+         else
+         {
+             userManager.add(user);
+             return true;
+         }
 
-        boolean result;
-        do
-        {
-            Scanner input = new Scanner(System.in);
-            System.out.print("Username : ");
-            username = input.nextLine();
-            System.out.print("Password : ");
-            password = input.nextLine();
-            System.out.print("Name :  ");
-            String name = input.nextLine();
-            System.out.print("Day of birth : ");
-            String dayofBirth = input.nextLine();
-            System.out.print("Place of birth : ");
-            String placeOfBirth = input.nextLine();
-            System.out.print("Email : ");
-            String email = input.nextLine();
-            user = new User(userList.get(userList.size()-1).getId()+1, String.valueOf(userList.get(userList.size()-1).getId()+1),
-                    username, password, rolesList);
-            Customer customer = new Customer(customerList.get(customerList.size()-1).getId()+1,String.valueOf(customerList.get(customerList.size()-1).getId()+1),
-                    name,dayofBirth, placeOfBirth, email, user);
-            result = customerManager.add(customer);
-
-            if (!result)
-            {
-                System.out.println("Email hoặc Username đã tồn tại ");
-            }
-
-        }
-        while (!result);
-
-        userManager.add(user);
-
-        System.out.println("Đăng ký thành công");
-
-        signIn();
     }
 
 }
