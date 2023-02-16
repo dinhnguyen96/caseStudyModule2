@@ -34,7 +34,7 @@ public class LoginTemplate
     }
     public static void main(String[] args)
     {
-       signInOrSignUpSelect();
+        signInOrSignUpSelect();
 
     }
 }

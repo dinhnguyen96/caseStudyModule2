@@ -34,11 +34,13 @@ public class CustomerManager implements GeneralFunction<Customer>
     }
 
     @Override
-    public Customer get(String code)
+    public Customer get(String customerCodeEmailUser)
     {
         for (Customer customer:readFile())
         {
-            if (customer.getCustomerCode().equalsIgnoreCase(code))
+            if (customer.getCustomerCode().equalsIgnoreCase(customerCodeEmailUser) ||
+                    customer.getUser().getUsername().equalsIgnoreCase(customerCodeEmailUser) ||
+                    customer.getEmail().equalsIgnoreCase(customerCodeEmailUser) )
             {
                 return customer;
             }
@@ -48,18 +50,18 @@ public class CustomerManager implements GeneralFunction<Customer>
     @Override
     public boolean add(Customer customer)
     {
-        Customer c = get(customer.getCustomerCode());
-        if (c != null)
+        Customer customerCode = get(customer.getCustomerCode());
+        Customer customerEmail = get(customer.getEmail());
+        Customer customerUserName = get(customer.getUser().getUsername());
+        if (customerCode != null || customerEmail != null || customerUserName != null)
         {
             return false;
         }
-        c = customer;
         List<Customer> updateCustomertList = readFile();
-        updateCustomertList.add(c);
+        updateCustomertList.add(customer);
         writeFile(updateCustomertList);
         return true;
     }
-
     @Override
     public boolean update(Customer customer)
     {
@@ -73,7 +75,6 @@ public class CustomerManager implements GeneralFunction<Customer>
         }
         return false;
     }
-
     @Override
     public boolean remove(Customer customer)
     {
