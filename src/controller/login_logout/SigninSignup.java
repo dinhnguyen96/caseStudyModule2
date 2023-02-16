@@ -48,7 +48,8 @@ public class SigninSignup {
         return signInCustomerInfp;// return null
     }
     // Xử lý Đăng ký
-    public boolean signUp(String username,String password, String name,String dayOfBirth, String placeOfBirth,String email)
+    public boolean signUp(String username,String password, String name,String dayOfBirth,
+                          String placeOfBirth,String email)
     {
         List<Customer> customerList = customerManager.readFile();
         List<User> userList = userManager.readFile();
@@ -60,7 +61,7 @@ public class SigninSignup {
         Customer customer = new Customer(customerList.get(customerList.size()-1).getId()+1,String.valueOf(customerList.get(customerList.size()-1).getId()+1),
                 name,dayOfBirth, placeOfBirth, email, user);
 
-         boolean  result = customerManager.add(customer);
+         boolean result = customerManager.add(customer);
          if (!result)
          {
              return false;

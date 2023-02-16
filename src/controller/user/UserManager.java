@@ -58,28 +58,18 @@ public class UserManager implements GeneralFunction<User>
     @Override
     public boolean update(User user)
     {
-        User u = get(user.getUserCode());
-        if (u != null)
-        {
-            List<User> updateUserList = readFile();
-            updateUserList.set(updateUserList.indexOf(u), u);
-            writeFile(updateUserList);
-            return true;
-        }
-        return false;
+        List<User> updateUserList = readFile();
+        updateUserList.set(updateUserList.indexOf(user), user);
+        writeFile(updateUserList);
+        return true;
     }
 
     @Override
     public boolean remove(User user)
     {
-        User u = get(user.getUserCode());
-        if (u != null)
-        {
-            List<User> updateUserList = readFile();
-            updateUserList.remove(u);
-            writeFile(updateUserList);
-            return true;
-        }
-        return false;
+        List<User> updateUserList = readFile();
+        updateUserList.remove(user);
+        writeFile(updateUserList);
+        return true;
     }
 }

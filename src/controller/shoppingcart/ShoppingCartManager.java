@@ -1,5 +1,6 @@
 package controller.shoppingcart;
 
+import controller.login_logout.SigninSignup;
 import controller.manager.ApplicationManager;
 import controller.customer.CustomerManager;
 import model.CartInfo;
@@ -49,14 +50,13 @@ public class ShoppingCartManager implements ApplicationShoppingCart
     }
     // add item in cart of user
     @Override
-    public void addItem(String customerCode,Item item)
+    public void addItem(Item item)
     {
         boolean checkExits = false;
-        CartInfo cartInfo = get(customerCode);
+        CartInfo cartInfo = get(SigninSignup.signInCustomerInfp.getCustomerCode());
         if(cartInfo == null)
         {
-            ApplicationManager<Customer> customerManager = new CustomerManager();
-            Customer customer = customerManager.get(customerCode);
+            Customer customer = SigninSignup.signInCustomerInfp;
             cartInfo = new CartInfo(customer);
             item.setQuantity(1);
             cartInfo.getCartList().add(item);
@@ -84,9 +84,9 @@ public class ShoppingCartManager implements ApplicationShoppingCart
     }
     // remove item in cart of user
     @Override
-    public void removeItem(String customerCode, String productCode)
+    public void removeItem(String productCode)
     {
-        CartInfo cartInfo = get(customerCode);
+        CartInfo cartInfo = get(SigninSignup.signInCustomerInfp.getCustomerCode());
 
         for (Item item : cartInfo.getCartList())
         {
@@ -101,9 +101,9 @@ public class ShoppingCartManager implements ApplicationShoppingCart
     }
     // clear item in cart of user
     @Override
-    public void removeAllItem(String customerCode)
+    public void removeAllItem()
     {
-        CartInfo cartInfo = get(customerCode);
+        CartInfo cartInfo = get(SigninSignup.signInCustomerInfp.getCustomerCode());
         List<CartInfo> updateCartInfoList = readFile();
         updateCartInfoList.remove(cartInfo);
         writeFile(updateCartInfoList);

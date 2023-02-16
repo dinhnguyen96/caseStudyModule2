@@ -65,28 +65,18 @@ public class CustomerManager implements GeneralFunction<Customer>
     @Override
     public boolean update(Customer customer)
     {
-        Customer c = get(customer.getCustomerCode());
-        if (c != null)
-        {
-            List<Customer> updateCustomerList = readFile();
-            updateCustomerList.set(updateCustomerList.indexOf(c), c);
-            writeFile(updateCustomerList);
-            return true;
-        }
-        return false;
+        List<Customer> updateCustomerList = readFile();
+        updateCustomerList.set(updateCustomerList.indexOf(customer), customer);
+        writeFile(updateCustomerList);
+        return true;
     }
     @Override
     public boolean remove(Customer customer)
     {
-        Customer c = get(customer.getCustomerCode());
-        if (c != null)
-        {
-            List<Customer> updateCustomerList = readFile();
-            updateCustomerList.remove(c);
-            writeFile(updateCustomerList);
-            return true;
-        }
-        return false;
+        List<Customer> updateCustomerList = readFile();
+        updateCustomerList.remove(customer);
+        writeFile(updateCustomerList);
+        return true;
     }
 
 }

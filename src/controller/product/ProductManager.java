@@ -60,29 +60,19 @@ public class ProductManager implements GeneralFunction<Product>
     @Override
     public boolean update(Product product)
     {
-        Product p = get(product.getProductCode());
-        if (p != null)
-        {
-            List<Product> updatePoductList = readFile();
-            updatePoductList.set(updatePoductList.indexOf(p), p);
-            writeFile(updatePoductList);
-            return true;
-        }
-        return false;
+        List<Product> updatePoductList = readFile();
+        updatePoductList.set(updatePoductList.indexOf(product), product);
+        writeFile(updatePoductList);
+        return true;
     }
 
     @Override
     public boolean remove(Product product)
     {
-        Product p = get(product.getProductCode());
-        if (p != null)
-        {
-            List<Product> updatePoductList = readFile();
-            updatePoductList.remove(p);
-            writeFile(updatePoductList);
-            return true;
-        }
-        return false;
+        List<Product> updatePoductList = readFile();
+        updatePoductList.remove(product);
+        writeFile(updatePoductList);
+        return true;
     }
 
 }

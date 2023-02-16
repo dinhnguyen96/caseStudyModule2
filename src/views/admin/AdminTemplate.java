@@ -1,4 +1,4 @@
-package views;
+package views.admin;
 
 import controller.categories.CategoriesManager;
 import controller.customer.CustomerManager;
@@ -8,6 +8,7 @@ import controller.manager.GeneralFunction;
 import controller.order.OrderManager;
 import controller.product.ProductManager;
 import model.*;
+import views.LoginTemplate;
 
 import java.util.List;
 import java.util.Scanner;
@@ -123,9 +124,9 @@ public class AdminTemplate
             System.out.println("1.Quản lý nhân viên ");
             System.out.println("2.Quản lý khách hàng ");
             System.out.println("3.Quản lý sản phẩm ");
-            System.out.println("4.Quản lý danh mục ");
-            System.out.println("5.Quản lý hóa đơn ");
-            System.out.println("6.Đăng xuất");
+            System.out.println("4.Quản lý danh mục");
+            System.out.println("5.Đăng xuất");
+            System.out.println("6.Thoát");
             System.out.print("Mời bạn chọn chức năng : ");
             int functionCode = input.nextInt();
             switch (functionCode) {
@@ -133,20 +134,21 @@ public class AdminTemplate
                     employeeManager();
                 }
                 case 2 -> {
-                    customerManager();
+                   customerManager();
                 }
                 case 3 -> {
                     productManager();
+                    AdminProduct.functionSelection();
                 }
                 case 4 -> {
-                    categoriesManager();
+                   categoriesManager();
                 }
                 case 5 -> {
-                    orderManager();
-                }
-                case 6 -> {
                     signOut();
                     exits = true;
+                }
+                case 6 ->{
+                    System.exit(6);
                 }
             }
         }
@@ -155,7 +157,7 @@ public class AdminTemplate
     public static void signOut()
     {
         Signout.getInstance().signOut();
-        LoginTemplate.signInOrSignUpSelect();
+        LoginTemplate.loginStatus();
     }
 
 }

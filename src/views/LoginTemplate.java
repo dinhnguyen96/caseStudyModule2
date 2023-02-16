@@ -3,6 +3,8 @@ package views;
 import controller.login_logout.SigninSignup;
 import model.Customer;
 import model.Roles;
+import views.admin.AdminTemplate;
+import views.client.ClientTemplate;
 
 import java.util.List;
 import java.util.Scanner;
@@ -13,7 +15,7 @@ public class LoginTemplate
     // đăng nhập
     public static void signIn()
     {
-        boolean result = false;
+        Customer customer = null;
         do {
             try {
                 System.out.println("Đăng nhập tài khoản");
@@ -23,18 +25,14 @@ public class LoginTemplate
                 System.out.print("Password : ");
                 String password = input.nextLine();
                 SigninSignup logSign = new SigninSignup(username, password);
-                Customer customer = logSign.signIn();
-                if (customer != null)
-                {
-                    result = true;
-                }
+                customer = logSign.signIn();
             }
             catch (NullPointerException e)
             {
                 System.out.println("Đăng nhập thất bại !");
             }
         }
-        while (!result) ;
+        while (customer == null) ;
         System.out.println("Đăng nhập thành công !");
     }
 

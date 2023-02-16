@@ -31,11 +31,12 @@ public class CategoriesManager implements GeneralFunction<Categories>
     }
 
     @Override
-    public Categories get(String code)
+    public Categories get(String categoriesCodeOrName)
     {
         for (Categories categories:readFile())
         {
-            if (categories.getCategoriesCode().equalsIgnoreCase(code))
+            if (categories.getCategoriesCode().equalsIgnoreCase(categoriesCodeOrName) ||
+               categories.getCategoriesName().equalsIgnoreCase(categoriesCodeOrName))
             {
                 return categories;
             }

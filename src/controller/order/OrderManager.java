@@ -64,29 +64,19 @@ public class OrderManager implements GeneralFunction<Order>
     @Override
     public boolean update(Order order)
     {
-        Order o = get(order.getOrderCode());
-        if (o != null)
-        {
-            List<Order> updateOrderList = readFile();
-            updateOrderList.set(updateOrderList.indexOf(o),  o);
-            writeFile(updateOrderList);
-            return true;
-        }
-        return false;
+        List<Order> updateOrderList = readFile();
+        updateOrderList.set(updateOrderList.indexOf(order),  order);
+        writeFile(updateOrderList);
+        return true;
 
     }
 
     @Override
     public boolean remove(Order order)
     {
-        Order o = get(order.getOrderCode());
-        if (o != null)
-        {
-            List<Order> updateOrderList = readFile();
-            updateOrderList.remove(o);
-            writeFile(updateOrderList);
-            return true;
-        }
-        return false;
+        List<Order> updateOrderList = readFile();
+        updateOrderList.remove(order);
+        writeFile(updateOrderList);
+        return true;
     }
 }

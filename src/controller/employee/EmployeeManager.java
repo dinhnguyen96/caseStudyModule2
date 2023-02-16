@@ -1,6 +1,7 @@
 package controller.employee;
 
 import controller.manager.GeneralFunction;
+import model.Customer;
 import model.Employee;
 import storage.EmployeeReadWrite;
 import storage.GetData;
@@ -31,11 +32,13 @@ public class EmployeeManager implements GeneralFunction<Employee>
     }
 
     @Override
-    public Employee get(String code)
+    public Employee get(String employeeCodeEmailUser)
     {
         for (Employee employee:readFile())
         {
-            if (employee.getEmployeeCode().equalsIgnoreCase(code))
+            if (employee.getEmployeeCode().equalsIgnoreCase(employeeCodeEmailUser) ||
+                    employee.getUser().getUsername().equalsIgnoreCase(employeeCodeEmailUser) ||
+                    employee.getEmail().equalsIgnoreCase(employeeCodeEmailUser) )
             {
                 return employee;
             }
@@ -46,43 +49,33 @@ public class EmployeeManager implements GeneralFunction<Employee>
     @Override
     public boolean add(Employee employee)
     {
-        Employee e = get(employee.getEmployeeCode());
-        if (e != null)
+        Employee employeeCode = get(employee.getEmployeeCode());
+        Employee employeeUsername = get(employee.getUser().getUsername());
+        Employee employeeEmail = get(employee.getEmail());
+        if (employeeCode != null || employeeUsername != null || employeeEmail != null)
         {
             return false;
         }
-        e = employee;
         List<Employee> updateEmployeeList = readFile();
-        updateEmployeeList.add(e);
+        updateEmployeeList.add(employee);
+        writeFile(updateEmployeeList);
+        return true;
+    }
+    @Override
+    public boolean update(Employee employee)
+    {
+        List<Employee> updateEmployeeList = readFile();
+        updateEmployeeList.set(updateEmployeeList.indexOf(employee), employee);
         writeFile(updateEmployeeList);
         return true;
     }
 
     @Override
-    public boolean update(Employee employee)
-    {
-        Employee e = get(employee.getEmployeeCode());
-        if (e != null)
-        {
-            List<Employee> updateEmployeeList = readFile();
-            updateEmployeeList.set(updateEmployeeList.indexOf(e), e);
-            writeFile(updateEmployeeList);
-            return true;
-        }
-        return false;
-    }
-
-    @Override
     public boolean remove(Employee employee)
     {
-        Employee e = get(employee.getEmployeeCode());
-        if (e != null)
-        {
-            List<Employee> updateEmployeeList = readFile();
-            updateEmployeeList.remove(e);
-            writeFile(updateEmployeeList);
-            return true;
-        }
-        return false;
+        List<Employee> updateEmployeeList = readFile();
+        updateEmployeeList.remove(employee);
+        writeFile(updateEmployeeList);
+        return true;
     }
 }
