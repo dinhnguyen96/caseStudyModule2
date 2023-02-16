@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class LoginSignup {
+public class SigninSignup {
 
     private String username;
 
@@ -24,7 +24,7 @@ public class LoginSignup {
     public static Customer signInCustomeInfp = null;
 
 
-    public LoginSignup()
+    public SigninSignup()
     {
         this.username = "";
         this.password = "";
@@ -40,7 +40,7 @@ public class LoginSignup {
         username = input.nextLine();
         System.out.print("Password : ");
         password = input.nextLine();
-
+        signInHandling(username,password);
 
     }
     private void signInHandling(String username, String password)
