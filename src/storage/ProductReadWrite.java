@@ -56,7 +56,6 @@ public class ProductReadWrite extends GetData<Product>
             ObjectOutputStream objectOutStream = new ObjectOutputStream(productFile))
         {
             objectOutStream.writeObject(productList);
-            System.out.println("Ghi thành công ! ");
 
         }
         catch (FileNotFoundException e)
