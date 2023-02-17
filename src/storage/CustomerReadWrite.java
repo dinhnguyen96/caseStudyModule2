@@ -56,7 +56,6 @@ public class CustomerReadWrite extends GetData<Customer>
             ObjectOutputStream objectOutStream = new ObjectOutputStream(customerFile))
         {
             objectOutStream.writeObject(customerList);
-            System.out.println("Ghi thành công ! ");
         }
         catch (FileNotFoundException e)
         {

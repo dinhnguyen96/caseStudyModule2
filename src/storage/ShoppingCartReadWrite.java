@@ -55,7 +55,6 @@ public class ShoppingCartReadWrite extends GetData<CartInfo>
             ObjectOutputStream objectOutStream = new ObjectOutputStream(cartFile))
         {
             objectOutStream.writeObject(cartInfoList);
-            System.out.println("Ghi thành công ! ");
         }
         catch (FileNotFoundException e)
         {

@@ -56,7 +56,6 @@ public class OrderDetailReadWrite extends GetData<OrderDetail>
             ObjectOutputStream objectOutStream = new ObjectOutputStream(orderDetailFile))
         {
             objectOutStream.writeObject(orderDetailList);
-            System.out.println("Ghi thành công ! ");
 
         }
         catch (FileNotFoundException e)
