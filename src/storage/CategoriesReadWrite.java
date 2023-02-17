@@ -3,6 +3,7 @@ package storage;
 import model.Categories;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class CategoriesReadWrite extends GetData<Categories>
@@ -25,11 +26,11 @@ public class CategoriesReadWrite extends GetData<Categories>
     @Override
     public List<Categories> readFile()
     {
+        List<Categories> categoriesList = null;
         try(InputStream categoriesDataFile = new FileInputStream(getPathDataFile());
             ObjectInputStream objectInputStream = new ObjectInputStream(categoriesDataFile) )
         {
-            List<Categories> categoriesList = (List<Categories>)objectInputStream.readObject();
-            return categoriesList;
+            categoriesList = (List<Categories>)objectInputStream.readObject();
         }
         catch (FileNotFoundException e)
         {
@@ -41,9 +42,9 @@ public class CategoriesReadWrite extends GetData<Categories>
         }
         catch (IOException e)
         {
-            System.out.println("Lỗi đọc file dữ liệu categories !");
+           categoriesList = new ArrayList<>();
         }
-        return null;
+        return categoriesList;
     }
 
     @Override

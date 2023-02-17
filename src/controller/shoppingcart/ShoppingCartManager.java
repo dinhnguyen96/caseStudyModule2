@@ -34,13 +34,13 @@ public class ShoppingCartManager implements ApplicationShoppingCart
     }
     // lay cartInfo theo user
     @Override
-    public CartInfo get(String customerCode)
+    public CartInfo get()
     {
         if (readFile() != null)
         {
             for (CartInfo cartInfo:readFile())
             {
-                if (cartInfo.getCustomer().getCustomerCode().equalsIgnoreCase(customerCode))
+                if (cartInfo.getCustomer().getUser().getUsername().equalsIgnoreCase(SigninSignup.signInCustomerInfp.getUser().getUsername()))
                 {
                     return cartInfo;
                 }
@@ -53,7 +53,7 @@ public class ShoppingCartManager implements ApplicationShoppingCart
     public void addItem(Item item)
     {
         boolean checkExits = false;
-        CartInfo cartInfo = get(SigninSignup.signInCustomerInfp.getCustomerCode());
+        CartInfo cartInfo = get();
         if(cartInfo == null)
         {
             Customer customer = SigninSignup.signInCustomerInfp;
@@ -86,7 +86,7 @@ public class ShoppingCartManager implements ApplicationShoppingCart
     @Override
     public void removeItem(String productCode)
     {
-        CartInfo cartInfo = get(SigninSignup.signInCustomerInfp.getCustomerCode());
+        CartInfo cartInfo = get();
 
         for (Item item : cartInfo.getCartList())
         {
@@ -103,7 +103,7 @@ public class ShoppingCartManager implements ApplicationShoppingCart
     @Override
     public void removeAllItem()
     {
-        CartInfo cartInfo = get(SigninSignup.signInCustomerInfp.getCustomerCode());
+        CartInfo cartInfo = get();
         List<CartInfo> updateCartInfoList = readFile();
         updateCartInfoList.remove(cartInfo);
         writeFile(updateCartInfoList);

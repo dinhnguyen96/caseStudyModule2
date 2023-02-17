@@ -3,6 +3,7 @@ package storage;
 import model.User;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class UserReadWrite extends GetData<User>
@@ -24,11 +25,12 @@ public class UserReadWrite extends GetData<User>
     @Override
     public List<User> readFile()
     {
+        List<User> userList = null;
         try(InputStream userDataFile = new FileInputStream(getPathDataFile());
             ObjectInputStream objectInputStream = new ObjectInputStream(userDataFile) )
         {
-            List<User> userList = (List<User>)objectInputStream.readObject();
-            return userList;
+           userList = (List<User>)objectInputStream.readObject();
+
         }
         catch (FileNotFoundException e)
         {
@@ -40,9 +42,9 @@ public class UserReadWrite extends GetData<User>
         }
         catch (IOException e)
         {
-            System.out.println("Lỗi đọc file dữ liệu user !");
+            userList = new ArrayList<>();
         }
-        return null;
+        return userList;
     }
 
     @Override

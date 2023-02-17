@@ -3,6 +3,7 @@ package storage;
 import model.Product;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProductReadWrite extends GetData<Product>
@@ -26,11 +27,12 @@ public class ProductReadWrite extends GetData<Product>
 
     @Override
     public List<Product> readFile() {
+
+        List<Product> productList = null;
         try(InputStream productDataFile = new FileInputStream(getPathDataFile());
             ObjectInputStream objectInputStream = new ObjectInputStream(productDataFile) )
         {
-            List<Product> productList = (List<Product>)objectInputStream.readObject();
-            return productList;
+            productList= (List<Product>)objectInputStream.readObject();
         }
         catch (FileNotFoundException e)
         {
@@ -42,9 +44,9 @@ public class ProductReadWrite extends GetData<Product>
         }
         catch (IOException e)
         {
-            System.out.println("Lỗi đọc file dữ liệu product !");
+            productList = new ArrayList<>();
         }
-        return null;
+        return productList;
     }
 
     @Override

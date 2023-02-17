@@ -3,6 +3,7 @@ package storage;
 import model.Customer;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class CustomerReadWrite extends GetData<Customer>
@@ -27,11 +28,11 @@ public class CustomerReadWrite extends GetData<Customer>
     @Override
     public List<Customer> readFile()
     {
+        List<Customer> customerList = null;
         try(InputStream customerDataFile = new FileInputStream(getPathDataFile());
             ObjectInputStream objectInputStream = new ObjectInputStream(customerDataFile) )
         {
-            List<Customer> customerList = (List<Customer>)objectInputStream.readObject();
-            return customerList;
+           customerList = (List<Customer>)objectInputStream.readObject();
         }
         catch (FileNotFoundException e)
         {
@@ -43,9 +44,9 @@ public class CustomerReadWrite extends GetData<Customer>
         }
         catch (IOException e)
         {
-            System.out.println("Lỗi đọc file dữ liệu customer!");
+            customerList = new ArrayList<>();
         }
-        return null;
+        return customerList;
     }
 
     @Override

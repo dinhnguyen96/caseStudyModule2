@@ -3,6 +3,7 @@ package storage;
 import model.CartInfo;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ShoppingCartReadWrite extends GetData<CartInfo>
@@ -26,11 +27,11 @@ public class ShoppingCartReadWrite extends GetData<CartInfo>
     @Override
     public List<CartInfo> readFile()
     {
+        List<CartInfo> cartInfoList = null;
         try(InputStream cartDataFile = new FileInputStream(getPathDataFile());
             ObjectInputStream objectInputStream = new ObjectInputStream(cartDataFile) )
         {
-            List<CartInfo> cartInfoList = (List<CartInfo>)objectInputStream.readObject();
-            return cartInfoList;
+            cartInfoList = (List<CartInfo>)objectInputStream.readObject();
         }
         catch (FileNotFoundException e)
         {
@@ -42,9 +43,9 @@ public class ShoppingCartReadWrite extends GetData<CartInfo>
         }
         catch (IOException e)
         {
-            System.out.println("Lỗi đọc file dữ liệu shopping cart !");
+           cartInfoList = new ArrayList<>();
         }
-        return null;
+        return cartInfoList;
     }
 
     @Override

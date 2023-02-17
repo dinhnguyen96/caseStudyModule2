@@ -6,10 +6,12 @@ import model.Item;
 
 public interface ApplicationShoppingCart extends ApplicationManager<CartInfo>
 {
-    void addItem(String customerCode, Item item);
 
-    void removeItem(String customerCode, String productCode);
+    CartInfo get();
+    void addItem(Item item);
 
-    void removeAllItem(String customerCode);
+    void removeItem(String productCode);
+
+    void removeAllItem();
 
 }

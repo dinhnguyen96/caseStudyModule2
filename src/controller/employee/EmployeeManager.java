@@ -1,7 +1,6 @@
 package controller.employee;
 
 import controller.manager.GeneralFunction;
-import model.Customer;
 import model.Employee;
 import storage.EmployeeReadWrite;
 import storage.GetData;

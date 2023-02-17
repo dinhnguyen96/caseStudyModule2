@@ -3,6 +3,7 @@ package storage;
 import model.Employee;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class EmployeeReadWrite extends GetData<Employee>
@@ -26,11 +27,12 @@ public class EmployeeReadWrite extends GetData<Employee>
     @Override
     public List<Employee> readFile()
     {
+        List<Employee> employeeList = null;
         try(InputStream employeeDataFile = new FileInputStream(getPathDataFile());
             ObjectInputStream objectInputStream = new ObjectInputStream(employeeDataFile) )
         {
-            List<Employee> employeeList = (List<Employee>)objectInputStream.readObject();
-            return employeeList;
+           employeeList  = (List<Employee>)objectInputStream.readObject();
+
         }
         catch (FileNotFoundException e)
         {
@@ -42,9 +44,9 @@ public class EmployeeReadWrite extends GetData<Employee>
         }
         catch (IOException e)
         {
-            System.out.println("Lỗi đọc file dữ liệu employee !");
+            employeeList = new ArrayList<>();
         }
-        return null;
+        return employeeList;
     }
 
     @Override
