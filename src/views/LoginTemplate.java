@@ -121,31 +121,24 @@ public class LoginTemplate
     // Trạng thái đăng nhập
     public static void loginStatus()
     {
-        if (SigninSignup.signInCustomerInfo == null)
+        signInOrSignUpSelect();
+        boolean adminRoleName = false;
+        List<Roles> roles = SigninSignup.signInCustomerInfo.getUser().getRolesList();
+        for (Roles roleName : roles)
         {
-            signInOrSignUpSelect();
+            if (roleName.getRoleName().equalsIgnoreCase("Admin"))
+            {
+                adminRoleName = true;
+                break;
+            }
+        }
+        if (adminRoleName)
+        {
+            templateAccessSelect();
         }
         else
         {
-            boolean adminRoleName = false;
-            List<Roles> roles = SigninSignup.signInCustomerInfo.getUser().getRolesList();
-
-            for (Roles roleName: roles)
-            {
-                if (roleName.getRoleName().equalsIgnoreCase("Admin"))
-                {
-                    adminRoleName = true;
-                    break;
-                }
-            }
-            if (adminRoleName)
-            {
-                templateAccessSelect();
-            }
-            else
-            {
-                ClientTemplate.clientTemplate();
-            }
+            ClientTemplate.clientTemplate();
         }
 
     }
