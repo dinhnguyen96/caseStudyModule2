@@ -9,7 +9,6 @@ import model.Product;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import java.util.regex.Pattern;
 
 public class AdminProduct {
 
@@ -49,6 +48,7 @@ public class AdminProduct {
         }
         while (!checked);
         System.out.println("Thêm thành công ");
+        ProductManager.isChecked = true;
     }
 
     public static void updateProduct()
@@ -66,6 +66,11 @@ public class AdminProduct {
                 Product product = productGeneralFunction.get(productCode);
                 if (product != null)
                 {
+                    System.out.println("Menu");
+                    System.out.println("1.Product Name");
+                    System.out.println("2.Product Price");
+                    System.out.println("3.Product Describe");
+                    System.out.println("4.Categories Type");
                     System.out.print("Bạn muốn cập nhật thông tin nào : ");
                     int number = Integer.parseInt(input.nextLine());
                     switch (number)
@@ -106,7 +111,8 @@ public class AdminProduct {
             }
         }
         while (!checked);
-        System.out.println("Cập nhật thành công ");
+        System.out.println("Cập nhật thành công !");
+        ProductManager.isChecked = true;
     }
 
     public static void removeProduct()
@@ -126,13 +132,20 @@ public class AdminProduct {
         }
         while (!checked);
         System.out.println("Xóa thành công ");
+        ProductManager.isChecked = true;
 
     }
 
     public static void functionSelection()
     {
         Scanner input = new Scanner(System.in);
-        System.out.print("Lựa chọn chức năng thêm/xóa/sửa sản phẩm : ");
+        System.out.println("Menu");
+        System.out.println("1.Thêm sản phẩm ");
+        System.out.println("2.Cập nhật sản phẩm  ");
+        System.out.println("3.Xoá sản phẩm  ");
+        System.out.println("4.Tìm kiếm sản phẩm theo tên ");
+        System.out.println("5.Tìm kiếm sản phẩm theo danh mục ");
+        System.out.print("Lựa chọn chức năng sản phẩm: ");
         int function = Integer.parseInt(input.nextLine());
         switch (function)
         {
@@ -151,7 +164,7 @@ public class AdminProduct {
                 List<Product> productsSeacrh = productSearchbyName(productName);
                 if (productsSeacrh.size() == 0)
                 {
-                    System.out.println("Không tìm tháy sản phẩm");
+                    System.out.println("Không tìm thấy sản phẩm");
                 }
                 else
                 {
@@ -190,7 +203,7 @@ public class AdminProduct {
     }
     public static List<Product> productSearchbyName(String productName)
     {
-        String regex = ".*"+productName+".*";
+        String regex = "Chuột.*";
 
         List<Product> searchList = new ArrayList<>();
 

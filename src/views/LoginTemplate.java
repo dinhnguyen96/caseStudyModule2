@@ -15,6 +15,7 @@ public class LoginTemplate
     // đăng nhập
     public static void signIn()
     {
+        int signInCount = 0;
         Customer customer ;
         do {
 
@@ -26,8 +27,20 @@ public class LoginTemplate
             String password = input.nextLine();
             SigninSignup logSign = new SigninSignup(username, password);
             customer = logSign.signIn();
+
+            if (customer == null)
+            {
+                signInCount++;
+                System.out.printf("Bạn đã nhập sai %d lần \n", signInCount) ;
+            }
         }
-        while (customer == null) ;
+        while (customer == null && signInCount < 3) ;
+
+        if (signInCount == 3)
+        {
+            System.out.println("Bạn đã bị khóa tài khoản !");
+            return;
+        }
         System.out.println("Đăng nhập thành công !");
     }
 
@@ -103,35 +116,38 @@ public class LoginTemplate
         }
         while (!result);
 
-
     }
 
     // Trạng thái đăng nhập
     public static void loginStatus()
     {
-        if (SigninSignup.signInCustomerInfp == null)
+        if (SigninSignup.signInCustomerInfo == null)
         {
             signInOrSignUpSelect();
         }
-        boolean adminRoleName = false;
-        List<Roles> roles = SigninSignup.signInCustomerInfp.getUser().getRolesList();
-
-        for (Roles roleName: roles)
-        {
-            if (roleName.getRoleName().equalsIgnoreCase("Admin"))
-            {
-                adminRoleName = true;
-                break;
-            }
-        }
-        if (adminRoleName)
-        {
-            templateAccessSelect();
-        }
         else
         {
-            ClientTemplate.clientTemplate();
+            boolean adminRoleName = false;
+            List<Roles> roles = SigninSignup.signInCustomerInfo.getUser().getRolesList();
+
+            for (Roles roleName: roles)
+            {
+                if (roleName.getRoleName().equalsIgnoreCase("Admin"))
+                {
+                    adminRoleName = true;
+                    break;
+                }
+            }
+            if (adminRoleName)
+            {
+                templateAccessSelect();
+            }
+            else
+            {
+                ClientTemplate.clientTemplate();
+            }
         }
+
     }
     // lựa chọn giao diện đối với admin
     public static void templateAccessSelect()
@@ -141,6 +157,8 @@ public class LoginTemplate
         do {
             try
             {
+                System.out.println("1. Giao diện admin");
+                System.out.println("2. Giao diện người dùng ");
                 System.out.print("Mời bạn chọn giao diện để truy cập : ");
                 int numberTemplate = Integer.parseInt(input.nextLine());
                 switch (numberTemplate)

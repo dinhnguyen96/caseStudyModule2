@@ -62,7 +62,6 @@ public class AdminTemplate
             System.out.println("Không có khách hàng nào trong danh sách");
         }
     }
-
     public static void productManager()
     {
         try {
