@@ -15,22 +15,17 @@ public class LoginTemplate
     // đăng nhập
     public static void signIn()
     {
-        Customer customer = null;
+        Customer customer ;
         do {
-            try {
-                System.out.println("Đăng nhập tài khoản");
-                Scanner input = new Scanner(System.in);
-                System.out.print("Username : ");
-                String username = input.nextLine();
-                System.out.print("Password : ");
-                String password = input.nextLine();
-                SigninSignup logSign = new SigninSignup(username, password);
-                customer = logSign.signIn();
-            }
-            catch (NullPointerException e)
-            {
-                System.out.println("Đăng nhập thất bại !");
-            }
+
+            System.out.println("Đăng nhập tài khoản");
+            Scanner input = new Scanner(System.in);
+            System.out.print("Username : ");
+            String username = input.nextLine();
+            System.out.print("Password : ");
+            String password = input.nextLine();
+            SigninSignup logSign = new SigninSignup(username, password);
+            customer = logSign.signIn();
         }
         while (customer == null) ;
         System.out.println("Đăng nhập thành công !");
@@ -88,13 +83,27 @@ public class LoginTemplate
 
     public static void signInOrSignUpSelect()
     {
-        Scanner input = new Scanner(System.in);
-        System.out.println("Mời bạn lựa chọn đăng nhập hoặc đăng ký ");
-        System.out.println("1. Sign in");
-        System.out.println("2. Sign up");
-        System.out.print("Lựa chọn : ");
-        int sigInOrSignUp = input.nextInt();
-        signInOrSignupHandling(sigInOrSignUp);
+        boolean result = false;
+        do {
+            try
+            {
+                Scanner input = new Scanner(System.in);
+                System.out.println("Mời bạn lựa chọn đăng nhập hoặc đăng ký ");
+                System.out.println("1. Sign in");
+                System.out.println("2. Sign up");
+                System.out.print("Lựa chọn : ");
+                int sigInOrSignUp = Integer.parseInt(input.nextLine());
+                signInOrSignupHandling(sigInOrSignUp);
+                result = true;
+            }
+            catch (NumberFormatException e)
+            {
+                System.out.println("Nhập dữ liệu không hợp lê!");
+            }
+        }
+        while (!result);
+
+
     }
 
     // Trạng thái đăng nhập
@@ -127,19 +136,36 @@ public class LoginTemplate
     // lựa chọn giao diện đối với admin
     public static void templateAccessSelect()
     {
+        boolean result = false;
         Scanner input = new Scanner(System.in);
-        System.out.print("Mời bạn chọn giao diện để truy cập : ");
-        int numberTemplate = input.nextInt();
-        switch (numberTemplate)
-        {
-            case 1->
+        do {
+            try
             {
-                AdminTemplate.adminTemplate();
+                System.out.print("Mời bạn chọn giao diện để truy cập : ");
+                int numberTemplate = Integer.parseInt(input.nextLine());
+                switch (numberTemplate)
+                {
+                    case 1->
+                    {
+                        AdminTemplate.adminTemplate();
+                    }
+                    case 2->{
+                        ClientTemplate.clientTemplate();
+
+                    }
+                }
+                result = true;
+
             }
-            case 2->{
-                ClientTemplate.clientTemplate();
+            catch (NumberFormatException e)
+            {
+                System.out.println("Nhập không hợp lệ!");
             }
+
         }
+        while (!result);
+
+
     }
     public static void main(String[] args)
     {

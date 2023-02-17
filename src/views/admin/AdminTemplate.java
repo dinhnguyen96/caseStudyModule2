@@ -48,7 +48,7 @@ public class AdminTemplate
     public static void customerManager()
     {
         try {
-            List<Customer>  customerList = customerGeneralFunction.readFile();
+            List<Customer> customerList = customerGeneralFunction.readFile();
             for (Customer customer : customerList) {
                 System.out.println("Customer "+customer.getId());
                 System.out.println("Customer Code : " + customer.getCustomerCode());
@@ -73,7 +73,7 @@ public class AdminTemplate
                 System.out.println("Product Code : " + product.getProductCode());
                 System.out.println("Product Name : " + product.getProductName());
                 System.out.println("Product Price : " + product.getProductPrice());
-                System.out.println("Product Describe : " + product.getProductPrice());
+                System.out.println("Product Describe : " + product.getProductDescribe());
             }
         }
         catch (NullPointerException e)
@@ -91,7 +91,6 @@ public class AdminTemplate
                 System.out.println("Order Date : " + order.getDateOfOrder());
                 System.out.println("Customer : " + order.getCustomer().getCustomerName());
             }
-
         }
         catch (NullPointerException e)
         {
@@ -120,37 +119,45 @@ public class AdminTemplate
         Scanner input = new Scanner(System.in);
         boolean exits = false;
         do {
-            System.out.println("Menu quản lý ");
-            System.out.println("1.Quản lý nhân viên ");
-            System.out.println("2.Quản lý khách hàng ");
-            System.out.println("3.Quản lý sản phẩm ");
-            System.out.println("4.Quản lý danh mục");
-            System.out.println("5.Đăng xuất");
-            System.out.println("6.Thoát");
-            System.out.print("Mời bạn chọn chức năng : ");
-            int functionCode = input.nextInt();
-            switch (functionCode) {
-                case 1 -> {
-                    employeeManager();
-                }
-                case 2 -> {
-                   customerManager();
-                }
-                case 3 -> {
-                    productManager();
-                    AdminProduct.functionSelection();
-                }
-                case 4 -> {
-                   categoriesManager();
-                }
-                case 5 -> {
-                    signOut();
-                    exits = true;
-                }
-                case 6 ->{
-                    System.exit(6);
+            try
+            {
+                System.out.println("Menu quản lý ");
+                System.out.println("1.Quản lý nhân viên ");
+                System.out.println("2.Quản lý khách hàng ");
+                System.out.println("3.Quản lý sản phẩm ");
+                System.out.println("4.Quản lý danh mục");
+                System.out.println("5.Đăng xuất");
+                System.out.println("6.Thoát");
+                System.out.print("Mời bạn chọn chức năng : ");
+                int functionCode = Integer.parseInt(input.nextLine());
+                switch (functionCode) {
+                    case 1 -> {
+                        employeeManager();
+                    }
+                    case 2 -> {
+                        customerManager();
+                    }
+                    case 3 -> {
+                        productManager();
+                        AdminProduct.functionSelection();
+                    }
+                    case 4 -> {
+                        categoriesManager();
+                    }
+                    case 5 -> {
+                        signOut();
+                        exits = true;
+                    }
+                    case 6 ->{
+                        System.exit(6);
+                    }
                 }
             }
+            catch (NumberFormatException e)
+            {
+                System.out.println("Nhập không hợp lệ");
+            }
+
         }
         while(!exits) ;
     }

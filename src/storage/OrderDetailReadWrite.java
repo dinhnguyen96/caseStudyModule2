@@ -4,6 +4,7 @@ import model.Order;
 import model.OrderDetail;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class OrderDetailReadWrite extends GetData<OrderDetail>
@@ -27,11 +28,11 @@ public class OrderDetailReadWrite extends GetData<OrderDetail>
     @Override
     public List<OrderDetail> readFile()
     {
+        List<OrderDetail> orderDetailList = null;
         try(InputStream orderDetailDataFile = new FileInputStream(getPathDataFile());
             ObjectInputStream objectInputStream = new ObjectInputStream(orderDetailDataFile) )
         {
-            List<OrderDetail> orderDetailList = (List<OrderDetail>)objectInputStream.readObject();
-            return orderDetailList;
+            orderDetailList = (List<OrderDetail>)objectInputStream.readObject();
         }
         catch (FileNotFoundException e)
         {
@@ -43,9 +44,9 @@ public class OrderDetailReadWrite extends GetData<OrderDetail>
         }
         catch (IOException e)
         {
-            System.out.println("Lỗi đọc file dữ liệu order detail !");
+            orderDetailList = new ArrayList<>();
         }
-        return null;
+        return orderDetailList;
     }
 
     @Override
