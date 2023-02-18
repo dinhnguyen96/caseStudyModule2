@@ -40,7 +40,7 @@ public class ShoppingCartManager implements ApplicationShoppingCart
         {
             for (CartInfo cartInfo:readFile())
             {
-                if (cartInfo.getCustomer().getUser().getUsername().equalsIgnoreCase(SigninSignup.signInCustomerInfp.getUser().getUsername()))
+                if (cartInfo.getCustomer().getUser().getUsername().equalsIgnoreCase(SigninSignup.signInCustomerInfo.getUser().getUsername()))
                 {
                     return cartInfo;
                 }
@@ -56,7 +56,7 @@ public class ShoppingCartManager implements ApplicationShoppingCart
         CartInfo cartInfo = get();
         if(cartInfo == null)
         {
-            Customer customer = SigninSignup.signInCustomerInfp;
+            Customer customer = SigninSignup.signInCustomerInfo;
             cartInfo = new CartInfo(customer);
             item.setQuantity(1);
             cartInfo.getCartList().add(item);

@@ -4,6 +4,7 @@ import controller.customer.CustomerManager;
 import controller.manager.GeneralFunction;
 import controller.user.UserManager;
 import model.Customer;
+import model.Employee;
 import model.Roles;
 import model.User;
 
@@ -21,7 +22,7 @@ public class SigninSignup {
 
     private GeneralFunction<User> userManager;
 
-    public static Customer signInCustomerInfp = null;
+    public static Customer signInCustomerInfo = null;
 
 
     public SigninSignup(String username, String password)
@@ -41,11 +42,11 @@ public class SigninSignup {
         {
             if (customer.getUser().getUsername().equals(username) && customer.getUser().getPassword().equals(password))
             {
-                signInCustomerInfp = customer;
+                signInCustomerInfo = customer;
                 break;
             }
         }
-        return signInCustomerInfp;// return null
+        return signInCustomerInfo;// return null
     }
     // Xử lý Đăng ký
     public boolean signUp(String username,String password, String name,String dayOfBirth,

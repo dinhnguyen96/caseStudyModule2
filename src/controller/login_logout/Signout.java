@@ -19,10 +19,10 @@ public class Signout {
     }
     public void signOut()
     {
-        if (SigninSignup.signInCustomerInfp != null)
+        if (SigninSignup.signInCustomerInfo != null)
         {
             System.out.println("Đăng xuất thành công !");
-            SigninSignup.signInCustomerInfp = null;
+            SigninSignup.signInCustomerInfo = null;
         }
     }
 }

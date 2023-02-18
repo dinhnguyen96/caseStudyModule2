@@ -13,6 +13,11 @@ public class CategoriesManager implements GeneralFunction<Categories>
 
     private List<Categories> categoriesList;
 
+
+    public static boolean categoriesDataCheck = false;
+
+
+
     public CategoriesManager()
     {
        categoriesReadWrite = CategoriesReadWrite.getInstance();
@@ -21,6 +26,11 @@ public class CategoriesManager implements GeneralFunction<Categories>
     @Override
     public List<Categories> readFile()
     {
+        if (categoriesDataCheck)
+        {
+            categoriesList = categoriesReadWrite.readFile();
+            categoriesDataCheck = false;
+        }
         return categoriesList;
     }
 
@@ -47,14 +57,14 @@ public class CategoriesManager implements GeneralFunction<Categories>
     @Override
     public boolean add(Categories categories)
     {
-        Categories c = get(categories.getCategoriesCode());
-        if (c != null)
+        Categories categoriesByCode = get(categories.getCategoriesCode());
+        Categories categoriesByName = get(categories.getCategoriesName());
+        if (categoriesByCode != null || categoriesByName != null)
         {
             return false;
         }
-        c = categories;
         List<Categories> updateCategoriesList = readFile();
-        updateCategoriesList.add(c);
+        updateCategoriesList.add(categories);
         writeFile(updateCategoriesList);
         return true;
     }
@@ -62,29 +72,19 @@ public class CategoriesManager implements GeneralFunction<Categories>
     @Override
     public boolean update(Categories categories)
     {
-        Categories c = get(categories.getCategoriesCode());
-        if (c != null)
-        {
-            List<Categories> updateCategoriesList = readFile();
-            updateCategoriesList.set(updateCategoriesList.indexOf(c), c);
-            writeFile(updateCategoriesList);
-            return true;
-        }
-        return false;
+        List<Categories> updateCategoriesList = readFile();
+        updateCategoriesList.set(updateCategoriesList.indexOf(categories), categories);
+        writeFile(updateCategoriesList);
+        return true;
     }
 
     @Override
     public boolean remove(Categories categories)
     {
-        Categories c = get(categories.getCategoriesCode());
-        if (c != null)
-        {
-            List<Categories> updateCategoriesList = readFile();
-            updateCategoriesList.remove(c);
-            writeFile(updateCategoriesList);
-            return true;
-        }
-        return false;
+        List<Categories> updateCategoriesList = readFile();
+        updateCategoriesList.remove(categories);
+        writeFile(updateCategoriesList);
+        return true;
     }
 
 }

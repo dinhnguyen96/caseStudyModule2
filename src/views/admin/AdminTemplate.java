@@ -73,6 +73,7 @@ public class AdminTemplate
                 System.out.println("Product Name : " + product.getProductName());
                 System.out.println("Product Price : " + product.getProductPrice());
                 System.out.println("Product Describe : " + product.getProductDescribe());
+                System.out.println("Product Categories : " + product.getCategories().getCategoriesName());
             }
         }
         catch (NullPointerException e)
@@ -99,9 +100,11 @@ public class AdminTemplate
 
     public static void categoriesManager()
     {
-        try {
+        try
+        {
             List<Categories> categoriesList = categoriesGeneralFunction.readFile();
-            for (Categories categories : categoriesList) {
+            for (Categories categories : categoriesList)
+            {
                 System.out.println("Categories "+categories.getId());
                 System.out.println("Categories Code : " + categories.getCategoriesCode());
                 System.out.println("Categories Name : " + categories.getCategoriesName());
@@ -142,6 +145,7 @@ public class AdminTemplate
                     }
                     case 4 -> {
                         categoriesManager();
+                        AdminCategories.functionSelection();
                     }
                     case 5 -> {
                         signOut();
@@ -156,7 +160,6 @@ public class AdminTemplate
             {
                 System.out.println("Nhập không hợp lệ");
             }
-
         }
         while(!exits) ;
     }

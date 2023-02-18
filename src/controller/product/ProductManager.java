@@ -13,17 +13,24 @@ public class ProductManager implements GeneralFunction<Product>
 
     private List<Product> productList;
 
+    public static boolean productDataChecked = false;
+
+
     public ProductManager()
     {
         productReadWrite = ProductReadWrite.getInstance();
-        productList = productReadWrite.readFile();
+        productList = productReadWrite.readFile();// doc file khi khoi tao doi tuong
     }
     @Override
     public List<Product> readFile()
     {
-       return productList;
+        if (productDataChecked)
+        {
+            productList = productReadWrite.readFile();
+            productDataChecked = false;
+        }
+         return productList;
     }
-
     @Override
     public void writeFile(List<Product> productList)
     {
