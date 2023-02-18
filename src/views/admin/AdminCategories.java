@@ -58,7 +58,7 @@ public class AdminCategories {
                     categories.setCategoriesName(categoriesName);
                     checked = categoriesGeneralFunction.update(categories);
                 }
-                if (!checked)
+                else
                 {
                     System.out.println("Danh mục này không tồn tại!");
                 }
@@ -82,7 +82,7 @@ public class AdminCategories {
                 categoriesGeneralFunction.remove(categories);
                 checked = true;
             }
-            if (!checked)
+            else
             {
                 System.out.println("Danh mục này không tồn tại !");
             }

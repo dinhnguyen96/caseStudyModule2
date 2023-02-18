@@ -135,6 +135,7 @@ public class AdminTemplate
                 switch (functionCode) {
                     case 1 -> {
                         employeeManager();
+                        AdminEmployee.functionSelection();
                     }
                     case 2 -> {
                         customerManager();

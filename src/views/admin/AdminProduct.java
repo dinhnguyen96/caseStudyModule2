@@ -50,7 +50,7 @@ public class AdminProduct {
                     checked =  productGeneralFunction.add(product);
                 }
             }
-            catch (NumberFormatException | NullPointerException e)
+            catch (NumberFormatException e)
             {
                 System.out.println("Nhập không hợp lệ !");
             }
@@ -65,8 +65,8 @@ public class AdminProduct {
         Scanner input = new Scanner(System.in);
         boolean updateChecked = false;
         do {
-            String productName="",  productDescribe="",  categorieType="";
-            double productPrice=0.0;
+            String productName,  productDescribe,  categorieType;
+            double productPrice;
             try
             {
                 System.out.println("Cập nhật sản phẩm ");
@@ -112,12 +112,12 @@ public class AdminProduct {
                    }
                    updateChecked =  productGeneralFunction.update(product);
                 }
-                if (!updateChecked)
+                else
                 {
                     System.out.println("Sản phẩm này không tồn tại!");
                 }
             }
-            catch (NumberFormatException | NullPointerException e)
+            catch (NumberFormatException e)
             {
                 System.out.println("Nhập không hợp lệ !");
             }
