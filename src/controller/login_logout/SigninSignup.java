@@ -11,6 +11,8 @@ import model.User;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class SigninSignup {
 
@@ -62,17 +64,27 @@ public class SigninSignup {
         Customer customer = new Customer(customerList.get(customerList.size()-1).getId()+1,String.valueOf(customerList.get(customerList.size()-1).getId()+1),
                 name,dayOfBirth, placeOfBirth, email, user);
 
-         boolean result = customerManager.add(customer);
-         if (!result)
-         {
-             return false;
-         }
-         else
-         {
-             userManager.add(user);
-             return true;
-         }
+        String regrex = "^(?=.*[A-Z]+)(?=.*[a-z]+)(?=.*[*$@!#]).{6,}$";
 
+        Pattern p = Pattern.compile(regrex);
+
+        Matcher m = p.matcher(password);
+
+        if (m.matches())
+        {
+            boolean result = customerManager.add(customer);
+
+            if (!result)
+            {
+                return false;
+            }
+            else
+            {
+                userManager.add(user);
+                return true;
+            }
+        }
+        return false;
     }
 
 }

@@ -56,7 +56,6 @@ public class EmployeeReadWrite extends GetData<Employee>
             ObjectOutputStream objectOutStream = new ObjectOutputStream(employeeFile))
         {
             objectOutStream.writeObject(employeeList);
-            System.out.println("Ghi thành công ! ");
         }
         catch (FileNotFoundException e)
         {

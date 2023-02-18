@@ -67,7 +67,7 @@ public class LoginTemplate
             result = logSign.signUp(username,password,name,dayofBirth,placeOfBirth,email);
             if (!result)
             {
-                System.out.println("Usename hoặc email đã tồn tại !");
+                System.out.println("Usename hoặc email đã tồn tại hoặc mật khẩu không hợp lệ !");
             }
         }
         while (!result);

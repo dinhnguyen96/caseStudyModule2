@@ -54,7 +54,6 @@ public class CategoriesReadWrite extends GetData<Categories>
             ObjectOutputStream objectOutStream = new ObjectOutputStream(categoriesFile))
         {
             objectOutStream.writeObject(categoriesList);
-            System.out.println("Ghi thành công ! ");
 
         }
         catch (FileNotFoundException e)
