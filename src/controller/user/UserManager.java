@@ -11,14 +11,25 @@ public class UserManager implements GeneralFunction<User>
 {
     private GetData<User> userReadWrite;
 
+    private  List<User> userList;
+
+    public static boolean userDataCheck = false;
+
     public UserManager()
     {
        userReadWrite = UserReadWrite.getInstance();
+       userList = userReadWrite.readFile();
     }
+
     @Override
     public List<User> readFile()
     {
-       return userReadWrite.readFile();
+        if (userDataCheck)
+        {
+            userList = userReadWrite.readFile();
+            userDataCheck = false;
+        }
+        return userList;
     }
 
     @Override
@@ -28,11 +39,12 @@ public class UserManager implements GeneralFunction<User>
     }
 
     @Override
-    public User get(String code)
+    public User get(String codeOrUsername)
     {
         for (User user:readFile())
         {
-            if (user.getUserCode().equalsIgnoreCase(code))
+            if (user.getUserCode().equalsIgnoreCase(codeOrUsername) ||
+                    user.getUsername().equals(codeOrUsername))
             {
                 return user;
             }
@@ -43,14 +55,14 @@ public class UserManager implements GeneralFunction<User>
     @Override
     public boolean add(User user)
     {
-        User u = get(user.getUserCode());
-        if (u != null)
+        User code = get(user.getUserCode());
+        User username = get(user.getUsername());
+        if (code != null || username != null)
         {
             return false;
         }
-        u = user;
         List<User> updateUserList = readFile();
-        updateUserList.add(u);
+        updateUserList.add(user);
         writeFile(updateUserList);
         return true;
     }

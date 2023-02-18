@@ -12,6 +12,10 @@ public class EmployeeManager implements GeneralFunction<Employee>
     private GetData<Employee> employeeReadWrite;
 
     private List<Employee> employeeList;
+
+
+    public static boolean employeeDataCheck = false;
+
     public EmployeeManager()
     {
         employeeReadWrite = EmployeeReadWrite.getInstance();
@@ -21,6 +25,11 @@ public class EmployeeManager implements GeneralFunction<Employee>
     @Override
     public List<Employee> readFile()
     {
+        if (employeeDataCheck)
+        {
+            employeeList = employeeReadWrite.readFile();
+            employeeDataCheck = false;
+        }
        return employeeList;
     }
 
