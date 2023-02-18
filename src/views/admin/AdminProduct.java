@@ -9,20 +9,22 @@ import model.Product;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class AdminProduct {
 
 
-    public static GeneralFunction<Product> productGeneralFunction = new ProductManager();
+    private static GeneralFunction<Product> productGeneralFunction = new ProductManager();
 
-    public  static GeneralFunction<Categories> categoriesGeneralFunction = new CategoriesManager();
+    private  static GeneralFunction<Categories> categoriesGeneralFunction = new CategoriesManager();
 
-    public static List<Product> productList = productGeneralFunction.readFile();
+    private static List<Product> productList = productGeneralFunction.readFile();
 
 
-    public static void addProduct()
+    private static void addProduct()
     {
         boolean checked = false;
+        Categories categories = null;
         do {
             try
             {
@@ -36,25 +38,32 @@ public class AdminProduct {
                 String productDescribe = input.nextLine();
                 System.out.print("Categories Type : ");
                 String categorieType = input.nextLine();
-                Categories categories = categoriesGeneralFunction.get(categorieType);
-                Product product = new Product(productList.get(productList.size()-1).getId()+1,String.valueOf(productList.get(productList.size()-1).getId()+1),
-                                    productName, productPrice, productDescribe, categories);
-                checked =  productGeneralFunction.add(product);
+                categories = categoriesGeneralFunction.get(categorieType);
+                if (categories == null)
+                {
+                    System.out.println("Danh mục này không tồn tại");
+                }
+                else
+                {
+                    Product product = new Product(productList.get(productList.size()-1).getId()+1,String.valueOf(productList.get(productList.size()-1).getId()+1),
+                            productName, productPrice, productDescribe, categories);
+                    checked =  productGeneralFunction.add(product);
+                }
             }
             catch (NumberFormatException | NullPointerException e)
             {
                 System.out.println("Nhập không hợp lệ !");
             }
         }
-        while (!checked);
+        while (!checked || categories == null);
         System.out.println("Thêm thành công ");
-        ProductManager.isChecked = true;
+        ProductManager.productDataChecked = true;
     }
 
-    public static void updateProduct()
+    private static void updateProduct()
     {
         Scanner input = new Scanner(System.in);
-        boolean checked = false;
+        boolean updateChecked = false;
         do {
             String productName="",  productDescribe="",  categorieType="";
             double productPrice=0.0;
@@ -101,8 +110,11 @@ public class AdminProduct {
                             }
                         }
                    }
-                   checked =  productGeneralFunction.update(product);
-                    checked = true;
+                   updateChecked =  productGeneralFunction.update(product);
+                }
+                if (!updateChecked)
+                {
+                    System.out.println("Sản phẩm này không tồn tại!");
                 }
             }
             catch (NumberFormatException | NullPointerException e)
@@ -110,15 +122,15 @@ public class AdminProduct {
                 System.out.println("Nhập không hợp lệ !");
             }
         }
-        while (!checked);
+        while (!updateChecked);
         System.out.println("Cập nhật thành công !");
-        ProductManager.isChecked = true;
+        ProductManager.productDataChecked = true;
     }
 
-    public static void removeProduct()
+    private static void removeProduct()
     {
         Scanner input = new Scanner(System.in);
-        boolean checked = false;
+        boolean removeChecked = false;
         do {
             System.out.println("Xóa  sản phẩm ");
             System.out.print("Product Code :");
@@ -127,15 +139,13 @@ public class AdminProduct {
             if (product != null)
             {
                 productGeneralFunction.remove(product);
-                checked = true;
+                removeChecked = true;
             }
         }
-        while (!checked);
+        while (!removeChecked);
         System.out.println("Xóa thành công ");
-        ProductManager.isChecked = true;
-
+        ProductManager.productDataChecked = true;
     }
-
     public static void functionSelection()
     {
         Scanner input = new Scanner(System.in);
@@ -145,6 +155,7 @@ public class AdminProduct {
         System.out.println("3.Xoá sản phẩm  ");
         System.out.println("4.Tìm kiếm sản phẩm theo tên ");
         System.out.println("5.Tìm kiếm sản phẩm theo danh mục ");
+        System.out.println("6.Quay lại trang chủ");
         System.out.print("Lựa chọn chức năng sản phẩm: ");
         int function = Integer.parseInt(input.nextLine());
         switch (function)
@@ -199,13 +210,15 @@ public class AdminProduct {
                     }
                 }
             }
+            case 6 ->{
+                  AdminTemplate.adminTemplate();
+            }
         }
     }
-    public static List<Product> productSearchbyName(String productName)
-    {
-        String regex = "Chuột.*";
-
+    private static List<Product> productSearchbyName(String productName)
+    {;
         List<Product> searchList = new ArrayList<>();
+        String regex = ".*"+productName+".*";
 
         for (Product product : productList)
         {
@@ -216,12 +229,13 @@ public class AdminProduct {
         }
         return searchList;
     }
-    public static List<Product> productSearchbyCategories(String categoriesName)
+    private static List<Product> productSearchbyCategories(String categoriesName)
     {
         List<Product> searchList = new ArrayList<>();
+        String regex = ".*"+categoriesName+".*";
         for (Product product : productList)
         {
-            if (product.getCategories().getCategoriesName().equalsIgnoreCase(categoriesName))
+            if (product.getCategories().getCategoriesName().matches(regex))
             {
                 searchList.add(product);
             }

@@ -102,8 +102,8 @@ public class LoginTemplate
             {
                 Scanner input = new Scanner(System.in);
                 System.out.println("Mời bạn lựa chọn đăng nhập hoặc đăng ký ");
-                System.out.println("1. Sign in");
-                System.out.println("2. Sign up");
+                System.out.println("1. Đăng nhập");
+                System.out.println("2. Đăng ký");
                 System.out.print("Lựa chọn : ");
                 int sigInOrSignUp = Integer.parseInt(input.nextLine());
                 signInOrSignupHandling(sigInOrSignUp);
@@ -115,9 +115,7 @@ public class LoginTemplate
             }
         }
         while (!result);
-
     }
-
     // Trạng thái đăng nhập
     public static void loginStatus()
     {
@@ -166,7 +164,6 @@ public class LoginTemplate
                     }
                 }
                 result = true;
-
             }
             catch (NumberFormatException e)
             {
@@ -175,8 +172,6 @@ public class LoginTemplate
 
         }
         while (!result);
-
-
     }
     public static void main(String[] args)
     {
