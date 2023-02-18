@@ -24,7 +24,7 @@ public class AdminProduct {
     private static void addProduct()
     {
         boolean checked = false;
-        Categories categories = null;
+        Categories categories;
         do {
             try
             {
@@ -55,7 +55,7 @@ public class AdminProduct {
                 System.out.println("Nhập không hợp lệ !");
             }
         }
-        while (!checked || categories == null);
+        while (!checked);
         System.out.println("Thêm thành công ");
         ProductManager.productDataChecked = true;
     }
@@ -196,7 +196,7 @@ public class AdminProduct {
                 List<Product> productsSeacrh = productSearchbyCategories(categoriesName);
                 if (productsSeacrh.size() == 0)
                 {
-                    System.out.println("Không tìm tháy sản phẩm");
+                    System.out.println("Không tìm thấy sản phẩm");
                 }
                 else
                 {
