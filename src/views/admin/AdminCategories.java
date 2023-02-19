@@ -39,7 +39,6 @@ public class AdminCategories {
         }
         while (!checked);
         System.out.println("Thêm thành công ");
-        CategoriesManager.categoriesDataCheck = true;
     }
 
     private static void updateCategories()
@@ -66,7 +65,6 @@ public class AdminCategories {
         }
         while (!checked);
         System.out.println("Cập nhật thành công !");
-        CategoriesManager.categoriesDataCheck = true;
     }
 
     private static void removeCategories()
@@ -90,7 +88,6 @@ public class AdminCategories {
         }
         while (!checked);
         System.out.println("Xóa thành công ");
-        CategoriesManager.categoriesDataCheck = true;
 
     }
 

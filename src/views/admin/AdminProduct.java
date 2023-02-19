@@ -57,7 +57,6 @@ public class AdminProduct {
         }
         while (!checked);
         System.out.println("Thêm thành công ");
-        ProductManager.productDataChecked = true;
     }
 
     private static void updateProduct()
@@ -125,7 +124,6 @@ public class AdminProduct {
         }
         while (!updateChecked);
         System.out.println("Cập nhật thành công !");
-        ProductManager.productDataChecked = true;
     }
 
     private static void removeProduct()
@@ -145,7 +143,6 @@ public class AdminProduct {
         }
         while (!removeChecked);
         System.out.println("Xóa thành công ");
-        ProductManager.productDataChecked = true;
     }
     public static void functionSelection()
     {
