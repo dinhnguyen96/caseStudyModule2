@@ -62,21 +62,24 @@ public class OrderManager implements GeneralFunction<Order>
     }
 
     @Override
-    public boolean update(Order order)
+    public void update(Order order)
     {
         List<Order> updateOrderList = readFile();
         updateOrderList.set(updateOrderList.indexOf(order),  order);
         writeFile(updateOrderList);
-        return true;
 
     }
 
     @Override
-    public boolean remove(Order order)
+    public void remove(Order order)
     {
         List<Order> updateOrderList = readFile();
         updateOrderList.remove(order);
         writeFile(updateOrderList);
-        return true;
+    }
+
+    @Override
+    public List<Order> searchByName(String name) {
+        return null;
     }
 }
