@@ -2,14 +2,14 @@ package controller.product;
 
 import controller.manager.GeneralFunction;
 import model.Product;
-import storage.GetData;
+import storage.ReadWrite;
 import storage.ProductReadWrite;
 
 import java.util.List;
 
 public class ProductManager implements GeneralFunction<Product>
 {
-    private GetData<Product> productReadWrite;
+    private ReadWrite<Product> productReadWrite;
 
     private List<Product> productList;
 
@@ -65,21 +65,19 @@ public class ProductManager implements GeneralFunction<Product>
         return true;
     }
     @Override
-    public boolean update(Product product)
+    public void update(Product product)
     {
         List<Product> updatePoductList = readFile();
         updatePoductList.set(updatePoductList.indexOf(product), product);
         writeFile(updatePoductList);
-        return true;
     }
 
     @Override
-    public boolean remove(Product product)
+    public void remove(Product product)
     {
         List<Product> updatePoductList = readFile();
         updatePoductList.remove(product);
         writeFile(updatePoductList);
-        return true;
     }
 
 }

@@ -1,19 +1,17 @@
 package controller.shoppingcart;
 
 import controller.login_logout.SigninSignup;
-import controller.manager.ApplicationManager;
-import controller.customer.CustomerManager;
 import model.CartInfo;
 import model.Customer;
 import model.Item;
-import storage.GetData;
+import storage.ReadWrite;
 import storage.ShoppingCartReadWrite;
 
 import java.util.List;
 
 public class ShoppingCartManager implements ApplicationShoppingCart
 {
-    private GetData<CartInfo> shoppingCartReadWrite;
+    private ReadWrite<CartInfo> shoppingCartReadWrite;
 
     private List<CartInfo> cartInfoList;
 
