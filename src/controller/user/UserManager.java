@@ -15,11 +15,10 @@ public class UserManager implements GeneralFunction<User>
 
     private  List<User> userList;
 
-    private boolean userDataCheck;
+    public static boolean userDataCheck = false;
 
     public UserManager()
     {
-        this.userDataCheck = false;
         this.userReadWrite = UserReadWrite.getInstance();
         this.userList = userReadWrite.readFile();
     }
@@ -67,7 +66,6 @@ public class UserManager implements GeneralFunction<User>
         List<User> updateUserList = readFile();
         updateUserList.add(user);
         writeFile(updateUserList);
-        this.userDataCheck = true;
         return true;
     }
 

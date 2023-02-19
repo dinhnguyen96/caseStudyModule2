@@ -15,11 +15,10 @@ public class EmployeeManager implements GeneralFunction<Employee>
     private List<Employee> employeeList;
 
 
-    private boolean employeeDataCheck;
+    public static boolean employeeDataCheck = false;
 
     public EmployeeManager()
     {
-        this.employeeDataCheck = false;
         this.employeeReadWrite = EmployeeReadWrite.getInstance();
         this.employeeList = employeeReadWrite.readFile();
     }
@@ -69,7 +68,6 @@ public class EmployeeManager implements GeneralFunction<Employee>
         List<Employee> updateEmployeeList = readFile();
         updateEmployeeList.add(employee);
         writeFile(updateEmployeeList);
-        this.employeeDataCheck = true;
         return true;
     }
     @Override
@@ -78,7 +76,6 @@ public class EmployeeManager implements GeneralFunction<Employee>
         List<Employee> updateEmployeeList = readFile();
         updateEmployeeList.set(updateEmployeeList.indexOf(employee), employee);
         writeFile(updateEmployeeList);
-        this.employeeDataCheck = true;
     }
 
     @Override
@@ -87,7 +84,6 @@ public class EmployeeManager implements GeneralFunction<Employee>
         List<Employee> updateEmployeeList = readFile();
         updateEmployeeList.remove(employee);
         writeFile(updateEmployeeList);
-        this.employeeDataCheck = true;
     }
 
     @Override

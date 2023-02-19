@@ -15,13 +15,12 @@ public class CategoriesManager implements GeneralFunction<Categories>
     private List<Categories> categoriesList;
 
 
-    private boolean categoriesDataCheck;
+    public static boolean categoriesDataCheck = false;
 
 
 
     public CategoriesManager()
     {
-        this.categoriesDataCheck = false;
         this. categoriesReadWrite = CategoriesReadWrite.getInstance();
         this.categoriesList = categoriesReadWrite.readFile();
 
@@ -69,7 +68,6 @@ public class CategoriesManager implements GeneralFunction<Categories>
         List<Categories> updateCategoriesList = readFile();
         updateCategoriesList.add(categories);
         writeFile(updateCategoriesList);
-        categoriesDataCheck = true;
         return true;
     }
 
@@ -79,7 +77,6 @@ public class CategoriesManager implements GeneralFunction<Categories>
         List<Categories> updateCategoriesList = readFile();
         updateCategoriesList.set(updateCategoriesList.indexOf(categories), categories);
         writeFile(updateCategoriesList);
-        categoriesDataCheck = true;
     }
 
     @Override
@@ -88,7 +85,6 @@ public class CategoriesManager implements GeneralFunction<Categories>
         List<Categories> updateCategoriesList = readFile();
         updateCategoriesList.remove(categories);
         writeFile(updateCategoriesList);
-        categoriesDataCheck = true;
     }
 
     @Override

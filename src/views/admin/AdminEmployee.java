@@ -65,6 +65,8 @@ public class AdminEmployee {
         }
         while (!checked);
         System.out.println("Thêm thành công ");
+        EmployeeManager.employeeDataCheck = true;
+        UserManager.userDataCheck = true;
     }
 
     private static void updateEmployee()
@@ -113,6 +115,9 @@ public class AdminEmployee {
         }
         while (!updateChecked);
         System.out.println("Cập nhật thành công !");
+        EmployeeManager.employeeDataCheck = true;
+        UserManager.userDataCheck = true;
+
     }
 
     private static void removeEmployee()
@@ -134,6 +139,8 @@ public class AdminEmployee {
         }
         while (!removeChecked);
         System.out.println("Xóa thành công ");
+        EmployeeManager.employeeDataCheck = true;
+        UserManager.userDataCheck = true;
     }
     public static void functionSelection()
     {

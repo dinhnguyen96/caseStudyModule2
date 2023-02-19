@@ -59,7 +59,7 @@ public class ClientTemplate
 
                     }
                     case 3 -> {
-                        ClientShoppingCart.cartDisplay();
+//                        ClientShoppingCart.cartDisplay();
                     }
                     case 4 -> {
                         System.out.print("Nhập tên sảm phẩm tìm kiếm : ");
