@@ -65,7 +65,6 @@ public class AdminEmployee {
         }
         while (!checked);
         System.out.println("Thêm thành công ");
-        UserManager.userDataCheck = true;
     }
 
     private static void updateEmployee()
