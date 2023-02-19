@@ -8,7 +8,7 @@ import storage.ProductReadWrite;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductManager implements GeneralFunction<Product>
+public class ProductManager implements ProductSearch
 {
     private ReadWrite<Product> productReadWrite;
 
@@ -97,4 +97,18 @@ public class ProductManager implements GeneralFunction<Product>
         return searchList;
     }
 
+    @Override
+    public List<Product> productSearchbyCategories(String categoriesName)
+    {
+        List<Product> searchList = new ArrayList<>();
+        String regex = ".*"+categoriesName+".*";
+        for (Product product : productList)
+        {
+            if (product.getCategories().getCategoriesName().matches(regex))
+            {
+                searchList.add(product);
+            }
+        }
+        return searchList;
+    }
 }
