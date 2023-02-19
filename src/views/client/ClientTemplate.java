@@ -45,10 +45,13 @@ public class ClientTemplate
                 System.out.println("Menu");
                 System.out.println("1.Hiển thị sản phẩm ");
                 System.out.println("2.Thêm sản phẩm vào giỏ hàng ");
-                System.out.println("3.Xem giỏ hàng ");
-                System.out.println("4.Tìm kiếm sản phẩm ");
-                System.out.println("5.Đăng xuất");
-                System.out.println("6.Thoát");
+                System.out.println("3.Xóa sản phẩm khỏi giỏ hàng");
+                System.out.println("4.Xóa tất cả sản phẩm khỏi giỏ hàng");
+                System.out.println("5.Xem giỏ hàng ");
+                System.out.println("6.Thanh toán");
+                System.out.println("7.Tìm kiếm sản phẩm ");
+                System.out.println("8.Đăng xuất");
+                System.out.println("9.Thoát");
                 System.out.print("Mời bạn chọn chức năng : ");
                 int functionCode = Integer.parseInt(input.nextLine());
                 switch (functionCode) {
@@ -56,12 +59,21 @@ public class ClientTemplate
                        productDisplay();
                     }
                     case 2 -> {
-
+                        ClientShoppingCart.addItem();
                     }
-                    case 3 -> {
-//                        ClientShoppingCart.cartDisplay();
+                    case 3->{
+                        ClientShoppingCart.removeItem();
                     }
-                    case 4 -> {
+                    case  4->{
+                        ClientShoppingCart.removeAllItem();
+                    }
+                    case 5 -> {
+                        ClientShoppingCart.cartDisplay();
+                    }
+                    case 6->{
+                        ClientCheckout.checkOut();
+                    }
+                    case 7 -> {
                         System.out.print("Nhập tên sảm phẩm tìm kiếm : ");
                         String productName = input.nextLine();
                         List<Product> productsSeacrh = productGeneralFunction.searchByName(productName);
@@ -81,12 +93,12 @@ public class ClientTemplate
                             }
                         }
                     }
-                    case 5 -> {
+                    case 8 -> {
                         signOut();
                         exits = true;
                     }
-                    case 6 ->{
-                        System.exit(6);
+                    case 9 ->{
+                        System.exit(9);
                     }
                 }
             }

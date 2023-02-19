@@ -19,7 +19,7 @@ public class ShoppingCartReadWrite extends ReadWrite<CartInfo>
     {
         if (shoppingCartReadWrite == null)
         {
-            shoppingCartReadWrite = new ShoppingCartReadWrite("src/storage/file/shoppingcart.dat");
+            shoppingCartReadWrite = new ShoppingCartReadWrite("src/storage/file/shopping.dat");
         }
         return shoppingCartReadWrite;
     }

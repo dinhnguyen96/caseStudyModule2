@@ -16,7 +16,7 @@ public class ShoppingCartManager implements ApplicationShoppingCart
 
     private List<CartInfo> cartInfoList;
 
-    private boolean shoppingCartDataChecked = false;
+    public static boolean shoppingCartDataChecked = false;
 
     public ShoppingCartManager()
     {
@@ -51,7 +51,7 @@ public class ShoppingCartManager implements ApplicationShoppingCart
     {
         for (CartInfo cartInfo:readFile())
         {
-            if (cartInfo.getCustomer().getUser().getUsername().equalsIgnoreCase(SigninSignup.signInCustomerInfo.getUser().getUsername()))
+            if (cartInfo.getCustomer().getUser().getUsername().equals(SigninSignup.signInCustomerInfo.getUser().getUsername()))
             {
                 return  cartInfo;
             }
@@ -92,7 +92,6 @@ public class ShoppingCartManager implements ApplicationShoppingCart
             cartInfoList.set(cartInfoList.indexOf(cartInfo), cartInfo);
         }
         writeFile(cartInfoList);
-        shoppingCartDataChecked = true;
     }
     // remove item in cart of user
     @Override
@@ -112,7 +111,6 @@ public class ShoppingCartManager implements ApplicationShoppingCart
             }
             cartInfoList.set(cartInfoList.indexOf(cartInfo), cartInfo);
             writeFile(cartInfoList);
-            shoppingCartDataChecked = true;
         }
     }
     // clear item in cart of user
@@ -125,8 +123,7 @@ public class ShoppingCartManager implements ApplicationShoppingCart
             List<CartInfo> updateCartInfoList = readFile();
             updateCartInfoList.remove(cartInfo);
             writeFile(updateCartInfoList);
-            shoppingCartDataChecked = true;
         }
-
     }
+
 }
