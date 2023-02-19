@@ -7,6 +7,7 @@ import model.Item;
 import storage.ReadWrite;
 import storage.ShoppingCartReadWrite;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ShoppingCartManager implements ApplicationShoppingCart
@@ -14,6 +15,8 @@ public class ShoppingCartManager implements ApplicationShoppingCart
     private ReadWrite<CartInfo> shoppingCartReadWrite;
 
     private List<CartInfo> cartInfoList;
+
+    private boolean shoppingCartDataChecked = false;
 
     public ShoppingCartManager()
     {
@@ -23,7 +26,19 @@ public class ShoppingCartManager implements ApplicationShoppingCart
     @Override
     public List<CartInfo> readFile()
     {
-       return cartInfoList;
+        if (cartInfoList == null)
+        {
+            cartInfoList = new ArrayList<>();
+        }
+        else
+        {
+            if (shoppingCartDataChecked)
+            {
+                cartInfoList = shoppingCartReadWrite.readFile();
+                shoppingCartDataChecked = false;
+            }
+        }
+        return cartInfoList;
     }
     @Override
     public void writeFile(List<CartInfo> cartInfoList)
@@ -34,14 +49,11 @@ public class ShoppingCartManager implements ApplicationShoppingCart
     @Override
     public CartInfo get()
     {
-        if (readFile() != null)
+        for (CartInfo cartInfo:readFile())
         {
-            for (CartInfo cartInfo:readFile())
+            if (cartInfo.getCustomer().getUser().getUsername().equalsIgnoreCase(SigninSignup.signInCustomerInfo.getUser().getUsername()))
             {
-                if (cartInfo.getCustomer().getUser().getUsername().equalsIgnoreCase(SigninSignup.signInCustomerInfo.getUser().getUsername()))
-                {
-                    return cartInfo;
-                }
+                return  cartInfo;
             }
         }
         return null;
@@ -50,7 +62,6 @@ public class ShoppingCartManager implements ApplicationShoppingCart
     @Override
     public void addItem(Item item)
     {
-        boolean checkExits = false;
         CartInfo cartInfo = get();
         if(cartInfo == null)
         {
@@ -58,9 +69,12 @@ public class ShoppingCartManager implements ApplicationShoppingCart
             cartInfo = new CartInfo(customer);
             item.setQuantity(1);
             cartInfo.getCartList().add(item);
+            cartInfoList.add(cartInfo);
+
         }
         else
         {
+            boolean checkExits = false;
             for (Item item1 : cartInfo.getCartList())
             {
                 if (item1.getProduct().getProductCode().equalsIgnoreCase(item.getProduct().getProductCode()))
@@ -75,10 +89,10 @@ public class ShoppingCartManager implements ApplicationShoppingCart
                 item.setQuantity(1);
                 cartInfo.getCartList().add(item);
             }
+            cartInfoList.set(cartInfoList.indexOf(cartInfo), cartInfo);
         }
-        cartInfoList.set(cartInfoList.indexOf(cartInfo), cartInfo);
         writeFile(cartInfoList);
-
+        shoppingCartDataChecked = true;
     }
     // remove item in cart of user
     @Override
@@ -86,24 +100,33 @@ public class ShoppingCartManager implements ApplicationShoppingCart
     {
         CartInfo cartInfo = get();
 
-        for (Item item : cartInfo.getCartList())
+        if (cartInfo != null)
         {
-            if (item.getProduct().getProductCode().equalsIgnoreCase(productCode))
+            for (Item item : cartInfo.getCartList())
             {
-                cartInfo.getCartList().remove(item);
-                break;
+                if (item.getProduct().getProductCode().equalsIgnoreCase(productCode))
+                {
+                    cartInfo.getCartList().remove(item);
+                    break;
+                }
             }
+            cartInfoList.set(cartInfoList.indexOf(cartInfo), cartInfo);
+            writeFile(cartInfoList);
+            shoppingCartDataChecked = true;
         }
-        cartInfoList.set(cartInfoList.indexOf(cartInfo), cartInfo);
-        writeFile(cartInfoList);
     }
     // clear item in cart of user
     @Override
     public void removeAllItem()
     {
         CartInfo cartInfo = get();
-        List<CartInfo> updateCartInfoList = readFile();
-        updateCartInfoList.remove(cartInfo);
-        writeFile(updateCartInfoList);
+        if (cartInfo != null)
+        {
+            List<CartInfo> updateCartInfoList = readFile();
+            updateCartInfoList.remove(cartInfo);
+            writeFile(updateCartInfoList);
+            shoppingCartDataChecked = true;
+        }
+
     }
 }

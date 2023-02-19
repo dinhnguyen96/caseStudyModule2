@@ -27,4 +27,8 @@ public class Item implements Serializable
       {
           this.quantity = quantity;
       }
+      public double itemTotal()
+      {
+            return getQuantity() * getProduct().getProductPrice();
+      }
 }

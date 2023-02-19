@@ -14,13 +14,14 @@ public class ProductManager implements ProductSearch
 
     private List<Product> productList;
 
-    public static boolean productDataChecked = false;
+    private boolean productDataChecked;
 
 
     public ProductManager()
     {
-        productReadWrite = ProductReadWrite.getInstance();
-        productList = productReadWrite.readFile();// doc file khi khoi tao doi tuong
+        this.productDataChecked = false;
+        this.productReadWrite = ProductReadWrite.getInstance();
+        this.productList = productReadWrite.readFile();// doc file khi khoi tao doi tuong
     }
     @Override
     public List<Product> readFile()
@@ -63,6 +64,7 @@ public class ProductManager implements ProductSearch
         List<Product> updatePoductList = readFile();
         updatePoductList.add(p);
         writeFile(updatePoductList);
+        this.productDataChecked = true;
         return true;
     }
     @Override
@@ -71,6 +73,7 @@ public class ProductManager implements ProductSearch
         List<Product> updatePoductList = readFile();
         updatePoductList.set(updatePoductList.indexOf(product), product);
         writeFile(updatePoductList);
+        this.productDataChecked = true;
     }
 
     @Override
@@ -79,6 +82,7 @@ public class ProductManager implements ProductSearch
         List<Product> updatePoductList = readFile();
         updatePoductList.remove(product);
         writeFile(updatePoductList);
+       this.productDataChecked = true;
     }
 
     @Override

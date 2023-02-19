@@ -28,11 +28,11 @@ public class CustomerReadWrite extends ReadWrite<Customer>
     @Override
     public List<Customer> readFile()
     {
-        List<Customer> customerList = null;
         try(InputStream customerDataFile = new FileInputStream(getPathDataFile());
             ObjectInputStream objectInputStream = new ObjectInputStream(customerDataFile) )
         {
-           customerList = (List<Customer>)objectInputStream.readObject();
+           List<Customer> customerList  = (List<Customer>)objectInputStream.readObject();
+           return customerList;
         }
         catch (FileNotFoundException e)
         {
@@ -44,9 +44,9 @@ public class CustomerReadWrite extends ReadWrite<Customer>
         }
         catch (IOException e)
         {
-            customerList = new ArrayList<>();
+            System.out.println("Lỗi đọc dữ liệu file customer");
         }
-        return customerList;
+        return null;
     }
 
     @Override

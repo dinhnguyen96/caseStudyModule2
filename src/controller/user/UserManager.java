@@ -15,12 +15,13 @@ public class UserManager implements GeneralFunction<User>
 
     private  List<User> userList;
 
-    public static boolean userDataCheck = false;
+    private boolean userDataCheck;
 
     public UserManager()
     {
-       userReadWrite = UserReadWrite.getInstance();
-       userList = userReadWrite.readFile();
+        this.userDataCheck = false;
+        this.userReadWrite = UserReadWrite.getInstance();
+        this.userList = userReadWrite.readFile();
     }
 
     @Override
@@ -66,6 +67,7 @@ public class UserManager implements GeneralFunction<User>
         List<User> updateUserList = readFile();
         updateUserList.add(user);
         writeFile(updateUserList);
+        this.userDataCheck = true;
         return true;
     }
 
@@ -75,6 +77,7 @@ public class UserManager implements GeneralFunction<User>
         List<User> updateUserList = readFile();
         updateUserList.set(updateUserList.indexOf(user), user);
         writeFile(updateUserList);
+        this.userDataCheck = true;
     }
 
     @Override
@@ -83,6 +86,7 @@ public class UserManager implements GeneralFunction<User>
         List<User> updateUserList = readFile();
         updateUserList.remove(user);
         writeFile(updateUserList);
+        this.userDataCheck = true;
     }
 
     @Override

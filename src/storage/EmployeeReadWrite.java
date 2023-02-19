@@ -27,11 +27,11 @@ public class EmployeeReadWrite extends ReadWrite<Employee>
     @Override
     public List<Employee> readFile()
     {
-        List<Employee> employeeList = null;
         try(InputStream employeeDataFile = new FileInputStream(getPathDataFile());
             ObjectInputStream objectInputStream = new ObjectInputStream(employeeDataFile) )
         {
-           employeeList  = (List<Employee>)objectInputStream.readObject();
+            List<Employee> employeeList   = (List<Employee>)objectInputStream.readObject();
+            return employeeList;
 
         }
         catch (FileNotFoundException e)
@@ -44,9 +44,9 @@ public class EmployeeReadWrite extends ReadWrite<Employee>
         }
         catch (IOException e)
         {
-            employeeList = new ArrayList<>();
+            System.out.println("Lỗi đọc file dữ liệu employee");
         }
-        return employeeList;
+        return null;
     }
 
     @Override

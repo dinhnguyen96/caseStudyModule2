@@ -28,11 +28,11 @@ public class ProductReadWrite extends ReadWrite<Product>
     @Override
     public List<Product> readFile() {
 
-        List<Product> productList = null;
         try(InputStream productDataFile = new FileInputStream(getPathDataFile());
             ObjectInputStream objectInputStream = new ObjectInputStream(productDataFile) )
         {
-            productList= (List<Product>)objectInputStream.readObject();
+            List<Product> productList = (List<Product>)objectInputStream.readObject();
+            return productList;
         }
         catch (FileNotFoundException e)
         {
@@ -44,9 +44,10 @@ public class ProductReadWrite extends ReadWrite<Product>
         }
         catch (IOException e)
         {
-            productList = new ArrayList<>();
+            System.out.println("Lỗi đọc dữ liệu file product");
         }
-        return productList;
+        return null;
+
     }
 
     @Override

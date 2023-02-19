@@ -26,11 +26,11 @@ public class OrderReadWrite extends ReadWrite<Order>
     @Override
     public List<Order> readFile()
     {
-        List<Order> orderList = null;
         try(InputStream customerDataFile = new FileInputStream(getPathDataFile());
             ObjectInputStream objectInputStream = new ObjectInputStream(customerDataFile) )
         {
-           orderList  = (List<Order>)objectInputStream.readObject();
+            List<Order> orderList  = (List<Order>)objectInputStream.readObject();
+            return  orderList;
         }
         catch (FileNotFoundException e)
         {
@@ -42,9 +42,9 @@ public class OrderReadWrite extends ReadWrite<Order>
         }
         catch (IOException e)
         {
-            orderList = new ArrayList<>();
+            System.out.println("Lỗi đọc dữ liệu file order !");
         }
-        return orderList;
+        return null;
     }
 
     @Override

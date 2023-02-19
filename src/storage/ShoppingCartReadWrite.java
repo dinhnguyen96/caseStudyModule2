@@ -27,11 +27,11 @@ public class ShoppingCartReadWrite extends ReadWrite<CartInfo>
     @Override
     public List<CartInfo> readFile()
     {
-        List<CartInfo> cartInfoList = null;
         try(InputStream cartDataFile = new FileInputStream(getPathDataFile());
             ObjectInputStream objectInputStream = new ObjectInputStream(cartDataFile) )
         {
-            cartInfoList = (List<CartInfo>)objectInputStream.readObject();
+            List<CartInfo> cartInfoList  = (List<CartInfo>)objectInputStream.readObject();
+            return cartInfoList;
         }
         catch (FileNotFoundException e)
         {
@@ -43,9 +43,10 @@ public class ShoppingCartReadWrite extends ReadWrite<CartInfo>
         }
         catch (IOException e)
         {
-           cartInfoList = new ArrayList<>();
+            System.out.println("Lỗi đọc dữ liệu file shopping cart");
         }
-        return cartInfoList;
+        return null;
+
     }
 
     @Override

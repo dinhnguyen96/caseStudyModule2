@@ -30,4 +30,13 @@ public class CartInfo implements Serializable
     {
         this.customer = customer;
     }
+    public double getTotal()
+    {
+        double moneyTotal = 0.0;
+        for (Item item : this.cartList)
+        {
+            moneyTotal += item.itemTotal();
+        }
+        return moneyTotal;
+    }
 }

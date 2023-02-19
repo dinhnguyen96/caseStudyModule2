@@ -26,11 +26,12 @@ public class CategoriesReadWrite extends ReadWrite<Categories>
     @Override
     public List<Categories> readFile()
     {
-        List<Categories> categoriesList = null;
+
         try(InputStream categoriesDataFile = new FileInputStream(getPathDataFile());
             ObjectInputStream objectInputStream = new ObjectInputStream(categoriesDataFile) )
         {
-            categoriesList = (List<Categories>)objectInputStream.readObject();
+            List<Categories> categoriesList  = (List<Categories>)objectInputStream.readObject();
+            return  categoriesList;
         }
         catch (FileNotFoundException e)
         {
@@ -42,9 +43,9 @@ public class CategoriesReadWrite extends ReadWrite<Categories>
         }
         catch (IOException e)
         {
-           categoriesList = new ArrayList<>();
+            System.out.println("Lỗi đọc dữ liệu file categories");
         }
-        return categoriesList;
+        return null;
     }
 
     @Override
