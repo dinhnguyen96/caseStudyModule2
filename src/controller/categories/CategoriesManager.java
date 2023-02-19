@@ -3,13 +3,13 @@ package controller.categories;
 import controller.manager.GeneralFunction;
 import model.Categories;
 import storage.CategoriesReadWrite;
-import storage.GetData;
+import storage.ReadWrite;
 
 import java.util.List;
 
 public class CategoriesManager implements GeneralFunction<Categories>
 {
-    private GetData<Categories> categoriesReadWrite;
+    private ReadWrite<Categories> categoriesReadWrite;
 
     private List<Categories> categoriesList;
 
@@ -70,21 +70,19 @@ public class CategoriesManager implements GeneralFunction<Categories>
     }
 
     @Override
-    public boolean update(Categories categories)
+    public void update(Categories categories)
     {
         List<Categories> updateCategoriesList = readFile();
         updateCategoriesList.set(updateCategoriesList.indexOf(categories), categories);
         writeFile(updateCategoriesList);
-        return true;
     }
 
     @Override
-    public boolean remove(Categories categories)
+    public void remove(Categories categories)
     {
         List<Categories> updateCategoriesList = readFile();
         updateCategoriesList.remove(categories);
         writeFile(updateCategoriesList);
-        return true;
     }
 
 }

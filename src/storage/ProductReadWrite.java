@@ -6,7 +6,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductReadWrite extends GetData<Product>
+public class ProductReadWrite extends ReadWrite<Product>
 {
     private static ProductReadWrite productReadWrite;
 

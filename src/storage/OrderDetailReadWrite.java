@@ -1,13 +1,12 @@
 package storage;
 
-import model.Order;
 import model.OrderDetail;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OrderDetailReadWrite extends GetData<OrderDetail>
+public class OrderDetailReadWrite extends ReadWrite<OrderDetail>
 {
 
     private static OrderDetailReadWrite orderDetailReadWrite;

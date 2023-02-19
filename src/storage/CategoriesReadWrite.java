@@ -6,7 +6,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CategoriesReadWrite extends GetData<Categories>
+public class CategoriesReadWrite extends ReadWrite<Categories>
 {
     private static CategoriesReadWrite categoriesReadWrite;
 

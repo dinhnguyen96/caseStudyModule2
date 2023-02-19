@@ -6,7 +6,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserReadWrite extends GetData<User>
+public class UserReadWrite extends ReadWrite<User>
 {
     private static UserReadWrite userReadWrite;
     private UserReadWrite(String pathDataFile) {

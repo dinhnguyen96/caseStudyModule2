@@ -110,7 +110,8 @@ public class AdminProduct {
                             }
                         }
                    }
-                   updateChecked =  productGeneralFunction.update(product);
+                   productGeneralFunction.update(product);
+                   updateChecked = true;
                 }
                 else
                 {

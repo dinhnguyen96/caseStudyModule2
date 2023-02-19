@@ -6,7 +6,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EmployeeReadWrite extends GetData<Employee>
+public class EmployeeReadWrite extends ReadWrite<Employee>
 {
     private static EmployeeReadWrite employeeReadWrite;
 

@@ -56,7 +56,8 @@ public class AdminCategories {
                     System.out.print("Categories Name :");
                     String categoriesName = input.nextLine();
                     categories.setCategoriesName(categoriesName);
-                    checked = categoriesGeneralFunction.update(categories);
+                    categoriesGeneralFunction.update(categories);
+                    checked = true;
                 }
                 else
                 {

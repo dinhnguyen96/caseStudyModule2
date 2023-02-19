@@ -6,7 +6,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ShoppingCartReadWrite extends GetData<CartInfo>
+public class ShoppingCartReadWrite extends ReadWrite<CartInfo>
 {
     private static ShoppingCartReadWrite shoppingCartReadWrite;
 

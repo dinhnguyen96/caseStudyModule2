@@ -105,7 +105,8 @@ public class AdminEmployee {
                             employee.setPlaceOfBirth(employeePlaceOfBirth);
                         }
                     }
-                    updateChecked = employeeGeneralFunction.update(employee);
+                    employeeGeneralFunction.update(employee);
+                    updateChecked = true;
                 }
                 else
                 {

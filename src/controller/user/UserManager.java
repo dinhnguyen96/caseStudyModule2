@@ -2,14 +2,14 @@ package controller.user;
 
 import controller.manager.GeneralFunction;
 import model.User;
-import storage.GetData;
+import storage.ReadWrite;
 import storage.UserReadWrite;
 
 import java.util.List;
 
 public class UserManager implements GeneralFunction<User>
 {
-    private GetData<User> userReadWrite;
+    private ReadWrite<User> userReadWrite;
 
     private  List<User> userList;
 
@@ -68,20 +68,18 @@ public class UserManager implements GeneralFunction<User>
     }
 
     @Override
-    public boolean update(User user)
+    public void update(User user)
     {
         List<User> updateUserList = readFile();
         updateUserList.set(updateUserList.indexOf(user), user);
         writeFile(updateUserList);
-        return true;
     }
 
     @Override
-    public boolean remove(User user)
+    public void remove(User user)
     {
         List<User> updateUserList = readFile();
         updateUserList.remove(user);
         writeFile(updateUserList);
-        return true;
     }
 }

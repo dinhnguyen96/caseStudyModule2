@@ -26,7 +26,6 @@ public class SigninSignup {
 
     public static Customer signInCustomerInfo = null;
 
-
     public SigninSignup(String username, String password)
     {
         this.username = username;
@@ -51,8 +50,7 @@ public class SigninSignup {
         return signInCustomerInfo;// return null
     }
     // Xử lý Đăng ký
-    public boolean signUp(String username,String password, String name,String dayOfBirth,
-                          String placeOfBirth,String email)
+    public boolean signUp(String name,String dayOfBirth, String placeOfBirth,String email)
     {
         List<Customer> customerList = customerManager.readFile();
         List<User> userList = userManager.readFile();
@@ -65,12 +63,11 @@ public class SigninSignup {
                 name,dayOfBirth, placeOfBirth, email, user);
 
         String regrex = "^(?=.*[A-Z]+)(?=.*[a-z]+)(?=.*[*$@!#]).{6,}$";
+        Pattern passwordRegular = Pattern.compile(regrex);
 
-        Pattern p = Pattern.compile(regrex);
+        Matcher passworMatch = passwordRegular.matcher(password);
 
-        Matcher m = p.matcher(password);
-
-        if (m.matches())
+        if (passworMatch.matches())
         {
             boolean result = customerManager.add(customer);
 

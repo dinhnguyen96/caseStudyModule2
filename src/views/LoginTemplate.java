@@ -64,7 +64,7 @@ public class LoginTemplate
             System.out.print("Email : ");
             String email = input.nextLine();
             SigninSignup logSign = new SigninSignup(username, password);
-            result = logSign.signUp(username,password,name,dayofBirth,placeOfBirth,email);
+            result = logSign.signUp(name,dayofBirth,placeOfBirth,email);
             if (!result)
             {
                 System.out.println("Usename hoặc email đã tồn tại hoặc mật khẩu không hợp lệ !");

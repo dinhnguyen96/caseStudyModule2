@@ -3,13 +3,13 @@ package controller.customer;
 import controller.manager.GeneralFunction;
 import model.Customer;
 import storage.CustomerReadWrite;
-import storage.GetData;
+import storage.ReadWrite;
 
 import java.util.List;
 
 public class CustomerManager implements GeneralFunction<Customer>
 {
-    private GetData<Customer> customerReadWrite;
+    private ReadWrite<Customer> customerReadWrite;
 
     private List<Customer> customerList;
 
@@ -63,20 +63,18 @@ public class CustomerManager implements GeneralFunction<Customer>
         return true;
     }
     @Override
-    public boolean update(Customer customer)
+    public void update(Customer customer)
     {
         List<Customer> updateCustomerList = readFile();
         updateCustomerList.set(updateCustomerList.indexOf(customer), customer);
         writeFile(updateCustomerList);
-        return true;
     }
     @Override
-    public boolean remove(Customer customer)
+    public void remove(Customer customer)
     {
         List<Customer> updateCustomerList = readFile();
         updateCustomerList.remove(customer);
         writeFile(updateCustomerList);
-        return true;
     }
 
 }

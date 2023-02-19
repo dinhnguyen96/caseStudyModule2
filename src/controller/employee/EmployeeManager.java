@@ -3,13 +3,13 @@ package controller.employee;
 import controller.manager.GeneralFunction;
 import model.Employee;
 import storage.EmployeeReadWrite;
-import storage.GetData;
+import storage.ReadWrite;
 
 import java.util.List;
 
 public class EmployeeManager implements GeneralFunction<Employee>
 {
-    private GetData<Employee> employeeReadWrite;
+    private ReadWrite<Employee> employeeReadWrite;
 
     private List<Employee> employeeList;
 
@@ -70,20 +70,18 @@ public class EmployeeManager implements GeneralFunction<Employee>
         return true;
     }
     @Override
-    public boolean update(Employee employee)
+    public void update(Employee employee)
     {
         List<Employee> updateEmployeeList = readFile();
         updateEmployeeList.set(updateEmployeeList.indexOf(employee), employee);
         writeFile(updateEmployeeList);
-        return true;
     }
 
     @Override
-    public boolean remove(Employee employee)
+    public void remove(Employee employee)
     {
         List<Employee> updateEmployeeList = readFile();
         updateEmployeeList.remove(employee);
         writeFile(updateEmployeeList);
-        return true;
     }
 }

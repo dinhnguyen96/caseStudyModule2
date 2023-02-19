@@ -6,7 +6,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OrderReadWrite extends GetData<Order>
+public class OrderReadWrite extends ReadWrite<Order>
 {
     private static OrderReadWrite orderReadWrite;
 

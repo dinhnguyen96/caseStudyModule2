@@ -2,11 +2,11 @@ package storage;
 
 import java.util.List;
 
-public abstract class GetData<T>
+public abstract class ReadWrite<T>
 {
     private String pathDataFile;
 
-    protected GetData(String pathDataFile)
+    protected ReadWrite(String pathDataFile)
     {
         this.pathDataFile = pathDataFile;
     }
