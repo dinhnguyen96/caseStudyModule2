@@ -3,6 +3,7 @@ package views.admin;
 import controller.categories.CategoriesManager;
 import controller.manager.GeneralFunction;
 import controller.product.ProductManager;
+import controller.product.ProductSearch;
 import model.Categories;
 import model.Product;
 
@@ -13,8 +14,7 @@ import java.util.regex.Pattern;
 
 public class AdminProduct {
 
-
-    private static GeneralFunction<Product> productGeneralFunction = new ProductManager();
+    private static ProductSearch productGeneralFunction = new ProductManager();
 
     private  static GeneralFunction<Categories> categoriesGeneralFunction = new CategoriesManager();
 
@@ -194,7 +194,7 @@ public class AdminProduct {
             {
                 System.out.print("Nhập danh mục : ");
                 String categoriesName = input.nextLine();
-                List<Product> productsSeacrh = productSearchbyCategories(categoriesName);
+                List<Product> productsSeacrh = productGeneralFunction.productSearchbyCategories(categoriesName);
                 if (productsSeacrh.size() == 0)
                 {
                     System.out.println("Không tìm thấy sản phẩm");
@@ -215,18 +215,5 @@ public class AdminProduct {
                   AdminTemplate.adminTemplate();
             }
         }
-    }
-    private static List<Product> productSearchbyCategories(String categoriesName)
-    {
-        List<Product> searchList = new ArrayList<>();
-        String regex = ".*"+categoriesName+".*";
-        for (Product product : productList)
-        {
-            if (product.getCategories().getCategoriesName().matches(regex))
-            {
-                searchList.add(product);
-            }
-        }
-        return searchList;
     }
 }
