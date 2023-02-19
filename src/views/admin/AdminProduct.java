@@ -173,7 +173,7 @@ public class AdminProduct {
             case 4 ->{
                 System.out.print("Nhập tên sản phẩm tìm kiếm : ");
                 String productName = input.nextLine();
-                List<Product> productsSeacrh = productSearchbyName(productName);
+                List<Product> productsSeacrh = productGeneralFunction.searchByName(productName);
                 if (productsSeacrh.size() == 0)
                 {
                     System.out.println("Không tìm thấy sản phẩm");
@@ -215,20 +215,6 @@ public class AdminProduct {
                   AdminTemplate.adminTemplate();
             }
         }
-    }
-    private static List<Product> productSearchbyName(String productName)
-    {;
-        List<Product> searchList = new ArrayList<>();
-        String regex = ".*"+productName+".*";
-
-        for (Product product : productList)
-        {
-            if (product.getProductName().matches(regex))
-            {
-                searchList.add(product);
-            }
-        }
-        return searchList;
     }
     private static List<Product> productSearchbyCategories(String categoriesName)
     {

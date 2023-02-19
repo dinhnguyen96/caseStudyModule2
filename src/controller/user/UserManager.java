@@ -1,10 +1,12 @@
 package controller.user;
 
 import controller.manager.GeneralFunction;
+import model.Customer;
 import model.User;
 import storage.ReadWrite;
 import storage.UserReadWrite;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class UserManager implements GeneralFunction<User>
@@ -81,5 +83,21 @@ public class UserManager implements GeneralFunction<User>
         List<User> updateUserList = readFile();
         updateUserList.remove(user);
         writeFile(updateUserList);
+    }
+
+    @Override
+    public List<User> searchByName(String userName)
+    {
+        List<User> searchList = new ArrayList<>();
+        String regex = ".*"+userName+".*";
+
+        for (User user :userList)
+        {
+            if (user.getUsername().matches(regex))
+            {
+                searchList.add(user);
+            }
+        }
+        return searchList;
     }
 }

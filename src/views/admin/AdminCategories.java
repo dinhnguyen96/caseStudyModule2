@@ -120,7 +120,7 @@ public class AdminCategories {
             {
                 System.out.print("Nhập danh mục : ");
                 String categoriesName = input.nextLine();
-                List<Categories> categoriesSeacrh = categoriesSearchbyName(categoriesName);
+                List<Categories> categoriesSeacrh = categoriesGeneralFunction.searchByName(categoriesName);
                 if (categoriesSeacrh.size() == 0)
                 {
                     System.out.println("Không tìm tháy danh mục");
@@ -140,19 +140,5 @@ public class AdminCategories {
                 AdminTemplate.adminTemplate();
             }
         }
-    }
-    private static List<Categories> categoriesSearchbyName(String categoriesName)
-    {;
-        List<Categories> searchList = new ArrayList<>();
-        String regex = ".*"+categoriesName+".*";
-
-        for (Categories categories : categoriesList)
-        {
-            if (categories.getCategoriesName().matches(regex))
-            {
-                searchList.add(categories);
-            }
-        }
-        return searchList;
     }
 }

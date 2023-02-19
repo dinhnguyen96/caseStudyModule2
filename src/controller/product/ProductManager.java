@@ -5,6 +5,7 @@ import model.Product;
 import storage.ReadWrite;
 import storage.ProductReadWrite;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProductManager implements GeneralFunction<Product>
@@ -78,6 +79,22 @@ public class ProductManager implements GeneralFunction<Product>
         List<Product> updatePoductList = readFile();
         updatePoductList.remove(product);
         writeFile(updatePoductList);
+    }
+
+    @Override
+    public List<Product> searchByName(String productName)
+    {
+        List<Product> searchList = new ArrayList<>();
+        String regex = ".*"+productName+".*";
+
+        for (Product product : productList)
+        {
+            if (product.getProductName().matches(regex))
+            {
+                searchList.add(product);
+            }
+        }
+        return searchList;
     }
 
 }

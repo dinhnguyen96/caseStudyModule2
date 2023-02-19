@@ -5,6 +5,7 @@ import model.Employee;
 import storage.EmployeeReadWrite;
 import storage.ReadWrite;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class EmployeeManager implements GeneralFunction<Employee>
@@ -83,5 +84,20 @@ public class EmployeeManager implements GeneralFunction<Employee>
         List<Employee> updateEmployeeList = readFile();
         updateEmployeeList.remove(employee);
         writeFile(updateEmployeeList);
+    }
+
+    @Override
+    public List<Employee> searchByName(String employeeName) {
+        List<Employee> searchList = new ArrayList<>();
+        String regex = ".*"+employeeName+".*";
+
+        for (Employee employee : employeeList)
+        {
+            if (employee.getEmployeeName().matches(regex))
+            {
+                searchList.add(employee);
+            }
+        }
+        return searchList;
     }
 }

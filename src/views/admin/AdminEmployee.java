@@ -165,7 +165,7 @@ public class AdminEmployee {
             case 4 ->{
                 System.out.print("Nhập tên nhân viên tìm kiếm : ");
                 String employeeName = input.nextLine();
-                List<Employee> employeeSearch = employeeSearchbyName(employeeName);
+                List<Employee> employeeSearch = employeeGeneralFunction.searchByName(employeeName);
                 if (employeeSearch.size() == 0)
                 {
                     System.out.println("Không tìm thấy nhân viên");
@@ -186,19 +186,5 @@ public class AdminEmployee {
                 AdminTemplate.adminTemplate();
             }
         }
-    }
-    private static List<Employee> employeeSearchbyName(String employeeName)
-    {;
-        List<Employee> searchList = new ArrayList<>();
-        String regex = ".*"+employeeName+".*";
-
-        for (Employee employee : employeeList)
-        {
-            if (employee.getEmployeeName().matches(regex))
-            {
-               searchList.add(employee);
-            }
-        }
-        return searchList;
     }
 }

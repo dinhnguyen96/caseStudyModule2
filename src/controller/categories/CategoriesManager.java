@@ -5,6 +5,7 @@ import model.Categories;
 import storage.CategoriesReadWrite;
 import storage.ReadWrite;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CategoriesManager implements GeneralFunction<Categories>
@@ -83,6 +84,22 @@ public class CategoriesManager implements GeneralFunction<Categories>
         List<Categories> updateCategoriesList = readFile();
         updateCategoriesList.remove(categories);
         writeFile(updateCategoriesList);
+    }
+
+    @Override
+    public List<Categories> searchByName(String categoriesName)
+    {
+        List<Categories> searchList = new ArrayList<>();
+        String regex = ".*"+categoriesName+".*";
+
+        for (Categories categories : categoriesList)
+        {
+            if (categories.getCategoriesName().matches(regex))
+            {
+                searchList.add(categories);
+            }
+        }
+        return searchList;
     }
 
 }

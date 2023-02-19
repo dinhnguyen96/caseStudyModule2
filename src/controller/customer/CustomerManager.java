@@ -1,10 +1,12 @@
 package controller.customer;
 
 import controller.manager.GeneralFunction;
+import model.Categories;
 import model.Customer;
 import storage.CustomerReadWrite;
 import storage.ReadWrite;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CustomerManager implements GeneralFunction<Customer>
@@ -75,6 +77,22 @@ public class CustomerManager implements GeneralFunction<Customer>
         List<Customer> updateCustomerList = readFile();
         updateCustomerList.remove(customer);
         writeFile(updateCustomerList);
+    }
+
+    @Override
+    public List<Customer> searchByName(String customerName)
+    {
+        List<Customer> searchList = new ArrayList<>();
+        String regex = ".*"+customerName+".*";
+
+        for (Customer customer : customerList)
+        {
+            if (customer.getCustomerName().matches(regex))
+            {
+                searchList.add(customer);
+            }
+        }
+        return searchList;
     }
 
 }
