@@ -128,8 +128,9 @@ public class AdminTemplate
                 System.out.println("2.Quản lý khách hàng ");
                 System.out.println("3.Quản lý sản phẩm ");
                 System.out.println("4.Quản lý danh mục");
-                System.out.println("5.Đăng xuất");
-                System.out.println("6.Thoát");
+                System.out.println("5.Quản lý hóa đơn");
+                System.out.println("6.Đăng xuất");
+                System.out.println("7.Thoát");
                 System.out.print("Mời bạn chọn chức năng : ");
                 int functionCode = Integer.parseInt(input.nextLine());
                 switch (functionCode) {
@@ -148,12 +149,15 @@ public class AdminTemplate
                         categoriesManager();
                         AdminCategories.functionSelection();
                     }
-                    case 5 -> {
+                    case 5->{
+                        orderManager();
+                    }
+                    case 6 -> {
                         signOut();
                         exits = true;
                     }
-                    case 6 ->{
-                        System.exit(6);
+                    case 7 ->{
+                        System.exit(7);
                     }
                 }
             }
