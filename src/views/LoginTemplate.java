@@ -1,7 +1,7 @@
 package views;
 
+import controller.customer.CustomerManager;
 import controller.login_logout.SigninSignup;
-import model.Customer;
 import model.Roles;
 import views.admin.AdminTemplate;
 import views.client.ClientTemplate;
@@ -16,7 +16,6 @@ public class LoginTemplate
     public static void signIn()
     {
         int signInCount = 0;
-        Customer customer ;
         do {
 
             System.out.println("Đăng nhập tài khoản");
@@ -26,15 +25,15 @@ public class LoginTemplate
             System.out.print("Password : ");
             String password = input.nextLine();
             SigninSignup logSign = new SigninSignup(username, password);
-            customer = logSign.signIn();
+            logSign.signIn();
 
-            if (customer == null)
+            if (SigninSignup.signInCustomerInfo == null)
             {
                 signInCount++;
                 System.out.printf("Bạn đã nhập sai %d lần \n", signInCount) ;
             }
         }
-        while (customer == null && signInCount < 3) ;
+        while (SigninSignup.signInCustomerInfo == null && signInCount < 3) ;
 
         if (signInCount == 3)
         {
@@ -120,25 +119,27 @@ public class LoginTemplate
     public static void loginStatus()
     {
         signInOrSignUpSelect();
-        boolean adminRoleName = false;
-        List<Roles> roles = SigninSignup.signInCustomerInfo.getUser().getRolesList();
-        for (Roles roleName : roles)
+        if (SigninSignup.signInCustomerInfo != null)
         {
-            if (roleName.getRoleName().equalsIgnoreCase("Admin"))
+            boolean adminRoleName = false;
+            List<Roles> roles = SigninSignup.signInCustomerInfo.getUser().getRolesList();
+            for (Roles roleName : roles)
             {
-                adminRoleName = true;
-                break;
+                if (roleName.getRoleName().equalsIgnoreCase("Admin"))
+                {
+                    adminRoleName = true;
+                    break;
+                }
+            }
+            if (adminRoleName)
+            {
+                templateAccessSelect();
+            }
+            else
+            {
+                ClientTemplate.clientTemplate();
             }
         }
-        if (adminRoleName)
-        {
-            templateAccessSelect();
-        }
-        else
-        {
-            ClientTemplate.clientTemplate();
-        }
-
     }
     // lựa chọn giao diện đối với admin
     public static void templateAccessSelect()

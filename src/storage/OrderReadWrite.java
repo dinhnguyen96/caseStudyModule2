@@ -8,13 +8,13 @@ import java.util.List;
 
 public class OrderReadWrite extends ReadWrite<Order>
 {
-    private static OrderReadWrite orderReadWrite;
+    private static ReadWrite<Order> orderReadWrite;
 
     private OrderReadWrite(String pathDataFile) {
         super(pathDataFile);
     }
 
-    public static OrderReadWrite getInstance()
+    public static ReadWrite<Order> getInstance()
     {
         if (orderReadWrite == null)
         {

@@ -8,14 +8,14 @@ import java.util.List;
 
 public class ShoppingCartReadWrite extends ReadWrite<CartInfo>
 {
-    private static ShoppingCartReadWrite shoppingCartReadWrite;
+    private static ReadWrite<CartInfo> shoppingCartReadWrite;
 
     private ShoppingCartReadWrite(String pathDataFile)
     {
         super(pathDataFile);
     }
 
-    public static ShoppingCartReadWrite getInstance()
+    public static ReadWrite<CartInfo> getInstance()
     {
         if (shoppingCartReadWrite == null)
         {

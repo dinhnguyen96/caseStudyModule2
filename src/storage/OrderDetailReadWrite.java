@@ -3,20 +3,19 @@ package storage;
 import model.OrderDetail;
 
 import java.io.*;
-import java.util.ArrayList;
 import java.util.List;
 
 public class OrderDetailReadWrite extends ReadWrite<OrderDetail>
 {
 
-    private static OrderDetailReadWrite orderDetailReadWrite;
+    private static ReadWrite<OrderDetail> orderDetailReadWrite;
 
     private OrderDetailReadWrite(String pathDataFile)
     {
         super(pathDataFile);
     }
 
-    public static OrderDetailReadWrite getInstance()
+    public static ReadWrite<OrderDetail> getInstance()
     {
         if (orderDetailReadWrite == null)
         {

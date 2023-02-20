@@ -9,14 +9,14 @@ import java.util.List;
 public class CustomerReadWrite extends ReadWrite<Customer>
 {
 
-    private static CustomerReadWrite customerReadWrite;
+    private static ReadWrite<Customer> customerReadWrite;
 
     private CustomerReadWrite(String pathDataFile)
     {
         super(pathDataFile);
     }
 
-    public static CustomerReadWrite getInstance()
+    public static ReadWrite<Customer> getInstance()
     {
         if (customerReadWrite == null)
         {

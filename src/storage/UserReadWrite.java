@@ -8,12 +8,12 @@ import java.util.List;
 
 public class UserReadWrite extends ReadWrite<User>
 {
-    private static UserReadWrite userReadWrite;
+    private static ReadWrite<User> userReadWrite;
     private UserReadWrite(String pathDataFile) {
         super(pathDataFile);
     }
 
-    public static UserReadWrite getInstance()
+    public static ReadWrite<User> getInstance()
     {
         if (userReadWrite == null)
         {

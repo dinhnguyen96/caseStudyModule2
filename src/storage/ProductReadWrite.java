@@ -8,7 +8,7 @@ import java.util.List;
 
 public class ProductReadWrite extends ReadWrite<Product>
 {
-    private static ProductReadWrite productReadWrite;
+    private static ReadWrite<Product> productReadWrite;
 
 
     private ProductReadWrite(String pathDataFile)
@@ -16,7 +16,7 @@ public class ProductReadWrite extends ReadWrite<Product>
         super(pathDataFile);
     }
 
-    public static ProductReadWrite getInstance()
+    public static ReadWrite<Product> getInstance()
     {
         if (productReadWrite == null)
         {

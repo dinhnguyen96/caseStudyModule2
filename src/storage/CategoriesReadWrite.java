@@ -8,13 +8,13 @@ import java.util.List;
 
 public class CategoriesReadWrite extends ReadWrite<Categories>
 {
-    private static CategoriesReadWrite categoriesReadWrite;
+    private static ReadWrite<Categories> categoriesReadWrite;
 
     private CategoriesReadWrite(String pathDataFile) {
         super(pathDataFile);
     }
 
-    public static CategoriesReadWrite getInstance()
+    public static ReadWrite<Categories> getInstance()
     {
         if (categoriesReadWrite == null)
         {

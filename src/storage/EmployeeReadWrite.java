@@ -8,14 +8,14 @@ import java.util.List;
 
 public class EmployeeReadWrite extends ReadWrite<Employee>
 {
-    private static EmployeeReadWrite employeeReadWrite;
+    private static ReadWrite<Employee> employeeReadWrite;
 
     private EmployeeReadWrite(String pathDataFile)
     {
         super(pathDataFile);
     }
 
-    public static EmployeeReadWrite getInstance()
+    public static ReadWrite<Employee> getInstance()
     {
         if (employeeReadWrite == null)
         {

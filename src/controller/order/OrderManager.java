@@ -2,6 +2,7 @@ package controller.order;
 
 import controller.manager.GeneralFunction;
 import model.Order;
+import model.OrderDetail;
 import storage.ReadWrite;
 import storage.OrderReadWrite;
 
@@ -89,4 +90,5 @@ public class OrderManager implements GeneralFunction<Order>
     public List<Order> searchByName(String name) {
         return null;
     }
+
 }

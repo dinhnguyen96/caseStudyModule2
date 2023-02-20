@@ -35,7 +35,7 @@ public class SigninSignup {
     }
 
     // Xử lý đăng nhập
-    public Customer signIn()
+    public void signIn()
     {
         List<Customer> customers = customerManager.readFile();
 
@@ -47,7 +47,6 @@ public class SigninSignup {
                 break;
             }
         }
-        return signInCustomerInfo;// return null
     }
     // Xử lý Đăng ký
     public boolean signUp(String name,String dayOfBirth, String placeOfBirth,String email)
