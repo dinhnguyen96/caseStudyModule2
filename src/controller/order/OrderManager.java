@@ -6,6 +6,7 @@ import model.OrderDetail;
 import storage.ReadWrite;
 import storage.OrderReadWrite;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class OrderManager implements GeneralFunction<Order>
@@ -27,6 +28,10 @@ public class OrderManager implements GeneralFunction<Order>
     @Override
     public List<Order> readFile()
     {
+        if (orderList == null)
+        {
+            orderList = new ArrayList<>();
+        }
         if (orderDateCheck)
         {
             orderList = orderReadWrite.readFile();
