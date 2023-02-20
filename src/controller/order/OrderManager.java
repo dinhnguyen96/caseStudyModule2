@@ -13,6 +13,9 @@ public class OrderManager implements GeneralFunction<Order>
 
     private List<Order> orderList;
 
+
+    public static boolean orderDateCheck = false;
+
     public OrderManager()
     {
        orderReadWrite  = OrderReadWrite.getInstance();
@@ -23,6 +26,10 @@ public class OrderManager implements GeneralFunction<Order>
     @Override
     public List<Order> readFile()
     {
+        if (orderDateCheck)
+        {
+            orderList = orderReadWrite.readFile();
+        }
         return orderList;
 
     }
